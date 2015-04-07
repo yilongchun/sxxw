@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XDKAirMenuController.h"
 
 @interface ViewController : UIViewController
 
+@property (nonatomic, strong) XDKAirMenuController *airMenuController;
 
 @end
 

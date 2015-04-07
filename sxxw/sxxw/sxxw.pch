@@ -1,0 +1,25 @@
+//
+//  sxxw.pch
+//  sxxw
+//
+//  Created by yons on 15-4-7.
+//  Copyright (c) 2015年 weiyida. All rights reserved.
+//
+
+#ifndef sxxw_sxxw_pch
+#define sxxw_sxxw_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+//边框颜色
+#define BORDER_COLOR [UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1]
+//背景颜色
+#define BACKGROUND_COLOR [UIColor colorWithRed:238/255.0 green:238/255.0 blue:238/255.0 alpha:1]
+
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#endif
