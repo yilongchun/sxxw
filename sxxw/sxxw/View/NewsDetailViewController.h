@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewsDetailViewController : UIViewController
+@interface NewsDetailViewController : UIViewController<UIWebViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *mywebview;
 @property (nonatomic, strong) NSString *url;

@@ -21,6 +21,13 @@
     [self.mywebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
 }
 
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+    [self showHudInView:self.view hint:@"加载中"];
+}
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    [self hideHud];
+}
+
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
