@@ -11,7 +11,7 @@
 #import "LoginViewController.h"
 
 #import "ViewController1.h"
-#import "NewsViewController.h"
+
 
 @interface ViewController () <XDKAirMenuDelegate>
 
@@ -62,18 +62,20 @@
 {
     
     if (vc == nil) {
-        NewsViewController *news1 = [self.storyboard instantiateViewControllerWithIdentifier:@"NewsViewController"];
-        news1.title = @"时事要闻";
-        NewsViewController *news2 = [self.storyboard instantiateViewControllerWithIdentifier:@"NewsViewController"];
-        news2.title = @"特别报道";
-        NewsViewController *news3 = [self.storyboard instantiateViewControllerWithIdentifier:@"NewsViewController"];
-        news3.title = @"图文副刊";
-        ViewController1 *vc1 = [[ViewController1 alloc] initWithViewControllers:@[news1,news2,news3]];
-        vc1.view.backgroundColor = BACKGROUND_COLOR;
-        vc1.title = @"中国三峡工程报";
-        vc1.indicatorInsets = UIEdgeInsetsMake(0, 0, 8, 0);
-        vc1.indicator.backgroundColor = [UIColor colorWithRed:72/255.0 green:147/255.0 blue:219/255.0 alpha:1];
-        vc = [[UINavigationController alloc] initWithRootViewController:vc1];
+//        NewsViewController *news1 = [self.storyboard instantiateViewControllerWithIdentifier:@"NewsViewController"];
+//        news1.title = @"时事要闻";
+//        NewsViewController *news2 = [self.storyboard instantiateViewControllerWithIdentifier:@"NewsViewController"];
+//        news2.title = @"特别报道";
+//        NewsViewController *news3 = [self.storyboard instantiateViewControllerWithIdentifier:@"NewsViewController"];
+//        news3.title = @"图文副刊";
+//        ViewController1 *vc1 = [[ViewController1 alloc] initWithViewControllers:@[news1,news2,news3]];
+//        ViewController1 *vc1 = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController1"];
+//        vc1.view.backgroundColor = BACKGROUND_COLOR;
+//        vc1.title = @"中国三峡工程报";
+//        vc1.indicatorInsets = UIEdgeInsetsMake(0, 0, 8, 0);
+//        vc1.indicator.backgroundColor = [UIColor colorWithRed:72/255.0 green:147/255.0 blue:219/255.0 alpha:1];
+        vc = [self.storyboard instantiateViewControllerWithIdentifier:@"NViewController3"];
+//        vc = [[UINavigationController alloc] initWithRootViewController:vc1];
     }
     vc.view.autoresizesSubviews = TRUE;
     vc.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;

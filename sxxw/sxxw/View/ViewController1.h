@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JYSlideSegmentController.h"
+#import "UIScrollView+PullLoad.h"
 
-@interface ViewController1 : JYSlideSegmentController
+@interface ViewController1 : UIViewController<UITableViewDataSource,UITableViewDelegate,PullDelegate>
 
+@property int bclassid;
+@property (weak, nonatomic) IBOutlet UIView *buttonBackground;
+- (IBAction)leftmenu:(id)sender;
 @end

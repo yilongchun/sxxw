@@ -11,7 +11,6 @@
 #import "XDKAirMenuController.h"
 
 #import "ViewController1.h"
-#import "NewsViewController.h"
 
 
 #import "ViewController2.h"
@@ -40,25 +39,28 @@
     self.navigationItem.backBarButtonItem = backItem;
     backItem.title = @"返回";
     
-    NewsViewController *news1 = [self.storyboard instantiateViewControllerWithIdentifier:@"NewsViewController"];
-    news1.title = @"news1";
-    NewsViewController *news2 = [self.storyboard instantiateViewControllerWithIdentifier:@"NewsViewController"];
-    news2.title = @"news2";
-    NewsViewController *news3 = [self.storyboard instantiateViewControllerWithIdentifier:@"NewsViewController"];
-    news3.title = @"news3";
-    ViewController1 *vc1 = [[ViewController1 alloc] initWithViewControllers:@[news1,news2,news3]];
-    vc1.view.backgroundColor = BACKGROUND_COLOR;
-    vc1.title = @"第一个";
-    vc1.indicatorInsets = UIEdgeInsetsMake(0, 0, 8, 0);
-    vc1.indicator.backgroundColor = [UIColor colorWithRed:72/255.0 green:147/255.0 blue:219/255.0 alpha:1];
+//    NewsViewController *news1 = [self.storyboard instantiateViewControllerWithIdentifier:@"NewsViewController"];
+//    news1.title = @"news1";
+//    NewsViewController *news2 = [self.storyboard instantiateViewControllerWithIdentifier:@"NewsViewController"];
+//    news2.title = @"news2";
+//    NewsViewController *news3 = [self.storyboard instantiateViewControllerWithIdentifier:@"NewsViewController"];
+//    news3.title = @"news3";
+//    ViewController1 *vc1 = [[ViewController1 alloc] initWithViewControllers:@[news1,news2,news3]];
+//    vc1.view.backgroundColor = BACKGROUND_COLOR;
+//    vc1.title = @"第一个";
+//    vc1.indicatorInsets = UIEdgeInsetsMake(0, 0, 8, 0);
+//    vc1.indicator.backgroundColor = [UIColor colorWithRed:72/255.0 green:147/255.0 blue:219/255.0 alpha:1];
+//    
+    ViewController1 *vc1 = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController1"];
+    vc1.bclassid = 2;
+    ViewController1 *vc2 = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController1"];
+    vc2.bclassid = 3;
+    ViewController1 *vc3 = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController1"];
+    vc3.bclassid = 4;
     
-    
-    ViewController2 *vc2 = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController2"];
-    ViewController3 *vc3 = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController3"];
-    
-    UITabBarItem *item1 = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFavorites tag:0];
-    UITabBarItem *item2 = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFeatured tag:1];
-    UITabBarItem *item3 = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemTopRated tag:2];
+    UITabBarItem *item1 = [[UITabBarItem alloc] initWithTitle:@"中国三峡工程报" image:nil tag:1];
+    UITabBarItem *item2 = [[UITabBarItem alloc] initWithTitle:@"中国三峡杂志" image:nil tag:2];
+    UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"清洁能源论坛" image:nil tag:3];
     
     vc1.tabBarItem = item1;
     vc2.tabBarItem = item2;
@@ -66,8 +68,8 @@
     
     NSMutableArray *viewArr_ = [NSMutableArray arrayWithObjects:vc1,vc2,vc3,nil];
     self.viewControllers = viewArr_;
-//
-//    self.selectedIndex = 0;
+
+    self.selectedIndex = 0;
 //    [[self tabBar] setSelectedImageTintColor:[UIColor colorWithRed:116/255.0 green:176/255.0 blue:64/255.0 alpha:1]];
 }
 
@@ -78,6 +80,12 @@
         [menu closeMenuAnimated];
     else
         [menu openMenuAnimated];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

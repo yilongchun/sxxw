@@ -93,11 +93,11 @@
 {
     [super viewDidAppear:animated];
     
-    UIWindow *frontWindow = [[UIApplication sharedApplication] keyWindow];
-    
-    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)];
-    panGesture.delegate = self;
-    [frontWindow addGestureRecognizer:panGesture];
+//    UIWindow *frontWindow = [[UIApplication sharedApplication] keyWindow];
+//    
+//    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)];
+//    panGesture.delegate = self;
+//    [frontWindow addGestureRecognizer:panGesture];
 }
 
 - (void)didReceiveMemoryWarning
@@ -230,9 +230,9 @@
         
         _currentViewController = [self.airDelegate airMenu:self viewControllerAtIndexPath:indexPath];
         
-        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeMenuAnimated)];
-        tapGesture.delegate = self;
-        [self.currentViewController.view addGestureRecognizer:tapGesture];
+//        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeMenuAnimated)];
+//        tapGesture.delegate = self;
+//        [self.currentViewController.view addGestureRecognizer:tapGesture];
         
         CGRect frame = self.view.frame;
         frame.origin.x = 0.f;
@@ -250,8 +250,8 @@
         [self.view addSubview:self.currentViewController.view];
         [self addChildViewController:self.currentViewController];
         
-        UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)];
-        [self.view addGestureRecognizer:panGesture];
+//        UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)];
+//        [self.view addGestureRecognizer:panGesture];
         
         if (!firstTime)
             [self openingAnimation];
@@ -371,7 +371,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 20)];
-    view.backgroundColor = [UIColor clearColor];
+    view.backgroundColor = [UIColor colorWithRed:227/255.0 green:227/255.0 blue:224/255.0 alpha:1];
     return view;
 }
 

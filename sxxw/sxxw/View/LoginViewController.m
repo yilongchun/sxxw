@@ -19,6 +19,8 @@
     // Do any additional setup after loading the view from its nib.
     
     self.title = @"用户登录";
+    
+    [self.navigationController setNavigationBarHidden:NO];
 }
 
 - (void)didReceiveMemoryWarning {

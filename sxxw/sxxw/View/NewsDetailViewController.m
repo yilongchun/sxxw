@@ -1,22 +1,28 @@
 //
-//  NewsViewController.m
+//  NewsDetailViewController.m
 //  sxxw
 //
-//  Created by yons on 15-4-7.
+//  Created by yons on 15-4-9.
 //  Copyright (c) 2015年 weiyida. All rights reserved.
 //
 
-#import "NewsViewController.h"
+#import "NewsDetailViewController.h"
 
-@interface NewsViewController ()
+@interface NewsDetailViewController ()
 
 @end
 
-@implementation NewsViewController
+@implementation NewsDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self.mywebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
