@@ -18,6 +18,8 @@
 		E40A6DF11AD69D480090AF75 /* UIViewController+DismissKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = E40A6DE61AD69D480090AF75 /* UIViewController+DismissKeyboard.m */; };
 		E40A6DF21AD69D480090AF75 /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E40A6DE81AD69D480090AF75 /* UIViewController+HUD.m */; };
 		E40A6DF51AD6D71D0090AF75 /* NewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E40A6DF41AD6D71D0090AF75 /* NewsDetailViewController.m */; };
+		E40A6DF91AD6E0BF0090AF75 /* TableCell3.m in Sources */ = {isa = PBXBuildFile; fileRef = E40A6DF71AD6E0BF0090AF75 /* TableCell3.m */; };
+		E40A6DFA1AD6E0BF0090AF75 /* TableCell3.xib in Resources */ = {isa = PBXBuildFile; fileRef = E40A6DF81AD6E0BF0090AF75 /* TableCell3.xib */; };
 		E4EA88951AD3D8B70065F271 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EA88941AD3D8B70065F271 /* main.m */; };
 		E4EA88981AD3D8B70065F271 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EA88971AD3D8B70065F271 /* AppDelegate.m */; };
 		E4EA889B1AD3D8B70065F271 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EA889A1AD3D8B70065F271 /* ViewController.m */; };
@@ -98,6 +100,9 @@
 		E40A6DE81AD69D480090AF75 /* UIViewController+HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HUD.m"; sourceTree = "<group>"; };
 		E40A6DF31AD6D71D0090AF75 /* NewsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsDetailViewController.h; path = View/NewsDetailViewController.h; sourceTree = "<group>"; };
 		E40A6DF41AD6D71D0090AF75 /* NewsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsDetailViewController.m; path = View/NewsDetailViewController.m; sourceTree = "<group>"; };
+		E40A6DF61AD6E0BF0090AF75 /* TableCell3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableCell3.h; path = View/TableCell3.h; sourceTree = "<group>"; };
+		E40A6DF71AD6E0BF0090AF75 /* TableCell3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableCell3.m; path = View/TableCell3.m; sourceTree = "<group>"; };
+		E40A6DF81AD6E0BF0090AF75 /* TableCell3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TableCell3.xib; path = View/TableCell3.xib; sourceTree = "<group>"; };
 		E4EA888F1AD3D8B70065F271 /* sxxw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sxxw.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4EA88931AD3D8B70065F271 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4EA88941AD3D8B70065F271 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -330,6 +335,9 @@
 				E4FFCA691AD690FB00E05E80 /* NewsTableViewCell.h */,
 				E4FFCA6A1AD690FB00E05E80 /* NewsTableViewCell.m */,
 				E4FFCA6B1AD690FB00E05E80 /* NewsTableViewCell.xib */,
+				E40A6DF61AD6E0BF0090AF75 /* TableCell3.h */,
+				E40A6DF71AD6E0BF0090AF75 /* TableCell3.m */,
+				E40A6DF81AD6E0BF0090AF75 /* TableCell3.xib */,
 				E40A6DF31AD6D71D0090AF75 /* NewsDetailViewController.h */,
 				E40A6DF41AD6D71D0090AF75 /* NewsDetailViewController.m */,
 				E4EA88CC1AD3E6CC0065F271 /* ViewController2.h */,
@@ -515,6 +523,7 @@
 			files = (
 				E4EA889E1AD3D8B70065F271 /* Main.storyboard in Resources */,
 				E4EA88A31AD3D8B70065F271 /* LaunchScreen.xib in Resources */,
+				E40A6DFA1AD6E0BF0090AF75 /* TableCell3.xib in Resources */,
 				E4EA88A01AD3D8B70065F271 /* Images.xcassets in Resources */,
 				E4FFCA6D1AD690FB00E05E80 /* NewsTableViewCell.xib in Resources */,
 				E4EA89261AD435350065F271 /* rightShadow@2x.png in Resources */,
@@ -546,6 +555,7 @@
 				E40A6DEE1AD69D480090AF75 /* UIButton+UIButtonImageWithLable.m in Sources */,
 				E4FFCA661AD68E8900E05E80 /* UIWebView+AFNetworking.m in Sources */,
 				E4FFCA6C1AD690FB00E05E80 /* NewsTableViewCell.m in Sources */,
+				E40A6DF91AD6E0BF0090AF75 /* TableCell3.m in Sources */,
 				E4FFCA581AD68E8900E05E80 /* AFHTTPSessionManager.m in Sources */,
 				E40A6DF01AD69D480090AF75 /* UIScrollView+PullLoad.m in Sources */,
 				E40A6DE91AD69D480090AF75 /* NSDate+Category.m in Sources */,

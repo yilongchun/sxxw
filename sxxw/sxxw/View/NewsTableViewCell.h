@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface NewsTableViewCell : UITableViewCell
-
+@property (nonatomic, strong) NSString *newsid;
+@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *newsimageurl;
 @property (weak, nonatomic) IBOutlet UIImageView *newsimage;
 @property (weak, nonatomic) IBOutlet UILabel *newstitle;
 @property (weak, nonatomic) IBOutlet UILabel *newscontent;
