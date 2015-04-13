@@ -134,6 +134,8 @@
 }
 
 - (UIButton *)getButtonWithMenu:(XHMenu *)menu {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored"-Wdeprecated-declarations"
     CGSize buttonSize = [menu.title sizeWithFont:menu.titleFont constrainedToSize:CGSizeMake(MAXFLOAT, CGRectGetHeight(self.bounds) - 10) lineBreakMode:NSLineBreakByCharWrapping];
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, buttonSize.width, CGRectGetHeight(self.bounds))];
     button.titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -147,6 +149,7 @@
         [button setTitleColor:menu.titleSelectedColor forState:UIControlStateSelected];
     [button addTarget:self action:@selector(menuButtonSelected:) forControlEvents:UIControlEventTouchUpInside];
     return button;
+#pragma clang diagnostic pop
 }
 
 - (id)initWithFrame:(CGRect)frame {
