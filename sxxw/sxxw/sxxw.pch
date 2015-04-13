@@ -43,5 +43,6 @@
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
+#import "UIButton+AFNetworking.h"
 #import "UIViewController+HUD.h"
 #endif

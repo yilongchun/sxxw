@@ -12,9 +12,9 @@
 #import "XHScrollMenu.h"
 #import "NewsTableViewCell.h"
 #import "NewsDetailViewController.h"
-#import "TableCell3.h"
+#import "BMAdScrollView.h"
 
-@interface ViewController1 () <XHScrollMenuDelegate, UIScrollViewDelegate>
+@interface ViewController1 () <XHScrollMenuDelegate, UIScrollViewDelegate,ValueClickDelegate>
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) XHScrollMenu *scrollMenu;
 @property (nonatomic, strong) NSMutableArray *menus;
@@ -28,9 +28,6 @@
     NSMutableArray *toppicnewsArray;
     CGFloat startX;
     CGFloat endX;
-    
-    TableCell3 *cell3;
-    UIScrollView *sv;
     
 }
 @synthesize bclassid;
@@ -51,7 +48,6 @@
     dataSourceArray = [NSMutableArray array];
     toppicnewsArray = [NSMutableArray array];
     tableArray = [NSMutableArray array];
-    
     
     self.buttonBackground.backgroundColor = BACKGROUND_COLOR;
     self.view.backgroundColor = BACKGROUND_COLOR;
@@ -81,64 +77,14 @@
     _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_scrollMenu.frame), CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - CGRectGetMaxY(_scrollMenu.frame))];
     _scrollView.showsHorizontalScrollIndicator = NO;
     _scrollView.showsVerticalScrollIndicator = NO;
+    _scrollView.tag = 999;
     _scrollView.delegate = self;
     _scrollView.pagingEnabled = YES;
     _scrollView.bounces = NO;
     
     [self.view addSubview:self.scrollView];
     
-//    for (int i = 0; i < 8; i ++) {
-//        XHMenu *menu = [[XHMenu alloc] init];
-//        
-//        NSString *title = nil;
-//        switch (i) {
-//            case 0:
-//                title = @"时事要闻";
-//                break;
-//            case 1:
-//                title = @"特别报道";
-//                break;
-//            case 2:
-//                title = @"图文副刊";
-//                break;
-//            default:
-//                title = @"热点";
-//                break;
-//        }
-//        menu.title = title;
-//        
-//        menu.titleNormalColor = [UIColor grayColor];
-//        menu.titleSelectedColor = DEFAULT_BLUE_COLOR;
-//        menu.titleFont = [UIFont boldSystemFontOfSize:16];
-//        [self.menus addObject:menu];
-//        
-//        UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(i * CGRectGetWidth(_scrollView.bounds), 0, CGRectGetWidth(_scrollView.bounds), CGRectGetHeight(_scrollView.bounds)-49) style:UITableViewStylePlain];
-//        table.dataSource = self;
-//        table.delegate = self;
-//        
-//        if ([table respondsToSelector:@selector(setSeparatorInset:)]) {
-//            [table setSeparatorInset:UIEdgeInsetsZero];
-//        }
-//        if ([table respondsToSelector:@selector(setLayoutMargins:)]) {
-//            [table setLayoutMargins:UIEdgeInsetsZero];
-//        }
-//        UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
-//        [table setTableFooterView:v];
-//        
-//        
-////        [table registerClass:[NewsTableViewCell class] forCellReuseIdentifier:@"NewsTableViewCell"];
-////        NewsTableViewController *news = [self.storyboard instantiateViewControllerWithIdentifier:@"NewsTableViewController"];
-////        UIImageView *logoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo"]];
-////        news.view.frame = CGRectMake(i * CGRectGetWidth(_scrollView.bounds), 0, CGRectGetWidth(_scrollView.bounds), CGRectGetHeight(_scrollView.bounds));
-//        [_scrollView addSubview:table];
-////        [table reloadData];
-//    }
-//    [_scrollView setContentSize:CGSizeMake(self.menus.count * CGRectGetWidth(_scrollView.bounds), CGRectGetHeight(_scrollView.bounds))];
-//    [self startObservingContentOffsetForScrollView:_scrollView];
-//    
-//    _scrollMenu.menus = self.menus;
-//    _scrollMenu.shouldUniformizeMenus = YES;
-//    [_scrollMenu reloadData];
+
     [self loadClassList];
     
 }
@@ -157,30 +103,15 @@
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
     [manager GET:str parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSLog(@"JSON: %@", operation.responseString);
 
         NSString *result = [NSString stringWithFormat:@"[%@]",[operation responseString]];
         
-        
-//        NSArray *array = [result componentsSeparatedByString:@","];
         NSError *error;
         NSArray *array = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
         if (array == nil) {
             NSLog(@"json parse failed \r\n");
         }else{
             for (int i = 0 ; i < array.count ; i++) {
-//                NSError *error;
-//                NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[str dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
-//                if (resultDict == nil) {
-//                    NSLog(@"json parse failed \r\n");
-//                }else{
-//                    NSString *classid = [resultDict objectForKey:@"classid"];
-//                    NSString *classname = [resultDict objectForKey:@"classname"];
-//                    NSString *col1 = [resultDict objectForKey:@"0"];
-//                    NSString *col2 = [resultDict objectForKey:@"1"];
-//                    NSLog(@"%@\t%@\t%@\t%@",classid,classname,col1,col2);
-//                }
-    //                NSLog(@"%@",info);
                 NSDictionary *info = [array objectAtIndex:i];
                 NSString *classid = [info objectForKey:@"classid"];
                 NSLog(@"%@",classid);
@@ -223,32 +154,6 @@
             _scrollMenu.shouldUniformizeMenus = YES;
             [_scrollMenu reloadData];
         }
-        
-            
-        
-//        if (array) {
-//            for (NSString *str in array) {
-//                NSError *error;
-//                NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[str dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
-//                if (resultDict == nil) {
-//                    NSLog(@"json parse failed \r\n");
-//                }else{
-//                    NSString *classid = [resultDict objectForKey:@"classid"];
-//                    NSString *classname = [resultDict objectForKey:@"classname"];
-//                    NSString *col1 = [resultDict objectForKey:@"0"];
-//                    NSString *col2 = [resultDict objectForKey:@"1"];
-//                    NSLog(@"%@\t%@\t%@\t%@",classid,classname,col1,col2);
-//                }
-////                NSLog(@"%@",info);
-////                NSString *classid = [info objectForKey:@"classid"];
-////                NSString *classname = [info objectForKey:@"classname"];
-////                NSString *col1 = [info objectForKey:@"0"];
-////                NSString *col2 = [info objectForKey:@"1"];
-////                
-////                NSLog(@"%@\t%@\t%@\t%@",classid,classname,col1,col2);
-//            }
-//        }
-        
         [self loadNewsList];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -280,8 +185,6 @@
         if (array == nil) {
             NSLog(@"json parse failed \r\n");
         }else{
-            
-//            NSMutableArray *toppics = [toppicnewsArray objectAtIndex:self.scrollMenu.selectedIndex];
             NSMutableArray *arr = [NSMutableArray array];
             for (int i = 0 ; i < 3; i++) {
                 NSDictionary *info = [array objectAtIndex:i];
@@ -357,20 +260,14 @@
 
 #pragma mark - ScrollView delegate
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if (scrollView == sv) {
-        [cell3 setstatus:sv];
-    }
-}
-
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{    //拖动前的起始坐标
-    if (scrollView != sv) {
+    if (scrollView.tag == 999) {
         startX = scrollView.contentOffset.x;
     }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    if (scrollView != sv) {
+    if (scrollView.tag == 999) {
         endX = scrollView.contentOffset.x;
         if (startX != endX) {
             //每页宽度
@@ -443,7 +340,17 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if ([dataSourceArray count] > self.scrollMenu.selectedIndex) {
-        return [[dataSourceArray objectAtIndex:self.scrollMenu.selectedIndex] count];
+        int count = (int)[[dataSourceArray objectAtIndex:self.scrollMenu.selectedIndex] count];
+        switch (count) {
+            case 1:
+            case 2:
+            case 3:
+                return 1;
+                break;
+            default:
+                return count - 2;
+                break;
+        }
     }else{
         return 0;
     }
@@ -451,7 +358,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
-        return 191;
+        return 200;
     }else{
         return 82;
     }
@@ -460,28 +367,33 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if(0==[indexPath row]){//图片新闻第一个单元格，滑动图片，初始化TableCell3
-        static NSString *CellIdentifier = @"TableCellIdentifier3";
-        cell3 = (TableCell3 *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        if (cell3 == nil) {
-            cell3 = [[[NSBundle mainBundle] loadNibNamed:@"TableCell3" owner:self options:nil] lastObject];
+        static NSString *CellIdentifier = @"firstcell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            NSMutableArray *arr=[NSMutableArray array];
+            NSMutableArray *strArr = [NSMutableArray array];
+            NSMutableArray *toppicnews = [toppicnewsArray objectAtIndex:self.scrollMenu.selectedIndex];
+            for (NewsTableViewCell *news in toppicnews) {
+                NSString *temptitle  = news.title;
+                NSString *temptitleimg  = news.newsimageurl;
+                [arr addObject:temptitleimg];
+                [strArr addObject:temptitle];
+            }
+            BMAdScrollView *adView = [[BMAdScrollView alloc] initWithNameArr:arr  titleArr:strArr height:200.0f offsetY:0];
+            adView.vDelegate = self;
+            adView.pageCenter = CGPointMake([UIScreen mainScreen].bounds.size.width - 25, 200-15);
+            adView.backgroundColor = [UIColor whiteColor];
+            [cell.contentView addSubview:adView];
         }
-//        if([_toppicnews count]>0){
-        NSMutableArray *toppicnews = [toppicnewsArray objectAtIndex:self.scrollMenu.selectedIndex];
-            sv = [cell3 getSv:toppicnews];
-            sv.delegate = self;
-            UITapGestureRecognizer *tap1=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(doSelectedCell:)];
-            tap1.cancelsTouchesInView = NO;
-            [cell3 addGestureRecognizer:tap1];
-//        }
-        return cell3;
+        return cell;
     }else{
         static NSString *cellreuseIdentifier = @"NewsTableViewCell";
         NewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellreuseIdentifier];
         if (cell == nil) {
             cell = [[[NSBundle mainBundle] loadNibNamed:@"NewsTableViewCell" owner:self options:nil] lastObject];
         }
-        
-        NSDictionary *info = [[dataSourceArray objectAtIndex:self.scrollMenu.selectedIndex] objectAtIndex:indexPath.row];
+        NSDictionary *info = [[dataSourceArray objectAtIndex:self.scrollMenu.selectedIndex] objectAtIndex:indexPath.row + 2];
         //    NSString *newsid = [info objectForKey:@"id"];
         //    NSString *newsdate = [info objectForKey:@"newspath"];
         NSNumber *plnum = [info objectForKey:@"plnum"];
@@ -501,7 +413,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSDictionary *info = [[dataSourceArray objectAtIndex:self.scrollMenu.selectedIndex] objectAtIndex:indexPath.row];
+    NSDictionary *info = [[dataSourceArray objectAtIndex:self.scrollMenu.selectedIndex] objectAtIndex:indexPath.row + 2];
     NSString *newsid = [info objectForKey:@"id"];
     XHMenu *menu =  [self.menus objectAtIndex:self.scrollMenu.selectedIndex];
     NewsDetailViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"NewsDetailViewController"];
@@ -519,15 +431,15 @@
     }
 }
 
--(void)doSelectedCell:(UITapGestureRecognizer*)sender{
-    NewsTableViewCell *cell = [[toppicnewsArray objectAtIndex:self.scrollMenu.selectedIndex] objectAtIndex:sv.contentOffset.x/CGRectGetWidth(self.view.bounds)];
+- (void)buttonClick:(NSInteger)vid
+{
+    NewsTableViewCell *cell = [[toppicnewsArray objectAtIndex:self.scrollMenu.selectedIndex] objectAtIndex:vid - 1];
     NSString *newsid = cell.newsid;
     XHMenu *menu =  [self.menus objectAtIndex:self.scrollMenu.selectedIndex];
     NewsDetailViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"NewsDetailViewController"];
     vc.url = [NSString stringWithFormat:@"%@%@?dealType=%@&classid=%@&newid=%@",API_HOST,API_GET_NEWS_INFO,@"select",menu.menuid,newsid];
     vc.title = menu.title;
     [self.navigationController pushViewController:vc animated:YES];
-    
 }
 
 #pragma mark -
