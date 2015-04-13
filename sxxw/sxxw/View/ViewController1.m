@@ -91,6 +91,9 @@
 
 //加载第一级
 -(void)loadClassList{
+    
+    
+    
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setValue:@"select" forKey:@"dealType"];
     [parameters setValue:[NSNumber numberWithInt:bclassid] forKey:@"bclassid"];
@@ -358,7 +361,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
-        return 200;
+        return 190;
     }else{
         return 82;
     }
@@ -380,9 +383,9 @@
                 [arr addObject:temptitleimg];
                 [strArr addObject:temptitle];
             }
-            BMAdScrollView *adView = [[BMAdScrollView alloc] initWithNameArr:arr  titleArr:strArr height:200.0f offsetY:0];
+            BMAdScrollView *adView = [[BMAdScrollView alloc] initWithNameArr:arr  titleArr:strArr height:190.0f offsetY:0];
             adView.vDelegate = self;
-            adView.pageCenter = CGPointMake([UIScreen mainScreen].bounds.size.width - 25, 200-15);
+            adView.pageCenter = CGPointMake([UIScreen mainScreen].bounds.size.width - 25, adView.frame.size.height-15);
             adView.backgroundColor = [UIColor whiteColor];
             [cell.contentView addSubview:adView];
         }

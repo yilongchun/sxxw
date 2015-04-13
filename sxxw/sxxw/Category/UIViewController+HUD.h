@@ -11,8 +11,11 @@
   */
 
 #import <UIKit/UIKit.h>
+#import "MBProgressHUD.h"
 
 @interface UIViewController (HUD)
+
+- (MBProgressHUD *)HUD;
 
 - (void)showHudInView:(UIView *)view hint:(NSString *)hint;
 

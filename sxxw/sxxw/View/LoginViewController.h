@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ViewController2.h"
+
 
 @interface LoginViewController : UIViewController
+
+@property(nonatomic, strong) ViewController2 *leftController;
+@property(nonatomic, strong) UINavigationController *centerController;
 
 @end

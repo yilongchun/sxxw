@@ -43,9 +43,6 @@
 		E4EA892A1AD435350065F271 /* XHMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EA89211AD435350065F271 /* XHMenuButton.m */; };
 		E4EA892B1AD435350065F271 /* XHScrollMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EA89231AD435350065F271 /* XHScrollMenu.m */; };
 		E4EF38BB1ADBD7440014DC7E /* BMAdScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EF38BA1ADBD7440014DC7E /* BMAdScrollView.m */; };
-		E4EF38BF1ADBD8CB0014DC7E /* image1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4EF38BC1ADBD8CB0014DC7E /* image1.jpg */; };
-		E4EF38C01ADBD8CB0014DC7E /* image2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4EF38BD1ADBD8CB0014DC7E /* image2.jpg */; };
-		E4EF38C11ADBD8CB0014DC7E /* image3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4EF38BE1ADBD8CB0014DC7E /* image3.jpg */; };
 		E4FFCA561AD68E8900E05E80 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FFCA2D1AD68E8900E05E80 /* AFHTTPRequestOperation.m */; };
 		E4FFCA571AD68E8900E05E80 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FFCA2F1AD68E8900E05E80 /* AFHTTPRequestOperationManager.m */; };
 		E4FFCA581AD68E8900E05E80 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FFCA311AD68E8900E05E80 /* AFHTTPSessionManager.m */; };
@@ -147,9 +144,6 @@
 		E4EA89231AD435350065F271 /* XHScrollMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHScrollMenu.m; sourceTree = "<group>"; };
 		E4EF38B91ADBD7440014DC7E /* BMAdScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMAdScrollView.h; sourceTree = "<group>"; };
 		E4EF38BA1ADBD7440014DC7E /* BMAdScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMAdScrollView.m; sourceTree = "<group>"; };
-		E4EF38BC1ADBD8CB0014DC7E /* image1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image1.jpg; sourceTree = "<group>"; };
-		E4EF38BD1ADBD8CB0014DC7E /* image2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image2.jpg; sourceTree = "<group>"; };
-		E4EF38BE1ADBD8CB0014DC7E /* image3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image3.jpg; sourceTree = "<group>"; };
 		E4FFCA2C1AD68E8900E05E80 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		E4FFCA2D1AD68E8900E05E80 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		E4FFCA2E1AD68E8900E05E80 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -264,7 +258,6 @@
 		E4EA88911AD3D8B70065F271 /* sxxw */ = {
 			isa = PBXGroup;
 			children = (
-				E4EF38B81ADBD7440014DC7E /* BMAdScrollView */,
 				E4EA88961AD3D8B70065F271 /* AppDelegate.h */,
 				E4EA88971AD3D8B70065F271 /* AppDelegate.m */,
 				E4EA88991AD3D8B70065F271 /* ViewController.h */,
@@ -276,6 +269,7 @@
 				E4EA88D81AD3EDC60065F271 /* JYSlideSegmentController.m */,
 				E4EA88C51AD3E6530065F271 /* View */,
 				E40A6DD41AD69D480090AF75 /* Category */,
+				E4EF38B81ADBD7440014DC7E /* BMAdScrollView */,
 				E4FFCA2B1AD68E8900E05E80 /* AFNetworking */,
 				E4FFCA511AD68E8900E05E80 /* MBProgressHUD */,
 				E4EA89151AD435350065F271 /* Source */,
@@ -288,9 +282,6 @@
 		E4EA88921AD3D8B70065F271 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E4EF38BC1ADBD8CB0014DC7E /* image1.jpg */,
-				E4EF38BD1ADBD8CB0014DC7E /* image2.jpg */,
-				E4EF38BE1ADBD8CB0014DC7E /* image3.jpg */,
 				E4EA88931AD3D8B70065F271 /* Info.plist */,
 				E4EA88941AD3D8B70065F271 /* main.m */,
 				E4EA88C41AD3E3390065F271 /* sxxw.pch */,
@@ -540,11 +531,8 @@
 				E4EA88A01AD3D8B70065F271 /* Images.xcassets in Resources */,
 				E4FFCA6D1AD690FB00E05E80 /* NewsTableViewCell.xib in Resources */,
 				E4EA89261AD435350065F271 /* rightShadow@2x.png in Resources */,
-				E4EF38C11ADBD8CB0014DC7E /* image3.jpg in Resources */,
-				E4EF38C01ADBD8CB0014DC7E /* image2.jpg in Resources */,
 				E4EA89251AD435350065F271 /* managerMenuButton@2x.png in Resources */,
 				E4EA89241AD435350065F271 /* leftShadow@2x.png in Resources */,
-				E4EF38BF1ADBD8CB0014DC7E /* image1.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

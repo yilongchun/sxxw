@@ -67,7 +67,6 @@
         [imageView setImage:image forState:UIControlStateNormal];
 //        [imageView setImageForState:UIControlStateNormal withURL:[NSURL URLWithString:imageName]];
         //设置点击方法
-//        [imageView.imageView setContentMode:UIViewContentModeScaleToFill];
         [imageView addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:imageView];
         
@@ -87,7 +86,7 @@
         //设置标题文字
         CGRect titleRect = titleFrame;
         titleRect.origin.x += 10;
-        UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(titleRect.origin.x, titleRect.origin.y, titleRect.size.width-50, titleRect.size.height)];
+        UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(titleRect.origin.x, titleRect.origin.y, titleRect.size.width-55, titleRect.size.height)];
         titleLabel.text=titleStr;
         titleLabel.font = [UIFont systemFontOfSize:15];
         titleLabel.backgroundColor =[UIColor clearColor];
@@ -123,6 +122,8 @@
     
     UIScrollView *imageSV;//滚动视图
     UIPageControl *pageControl;
+    
+    NSInteger tempIndex;
 }
 @end
 static  int pageNumber;//页码
@@ -219,7 +220,7 @@ static  int pageNumber;//页码
             imageURL = imageArr[0];
         }
         //创建内容对象
-        CGRect titleRect = CGRectMake(0, 170, CGRectGetWidth([UIScreen mainScreen].bounds), 30);
+        CGRect titleRect = CGRectMake(0, self.frame.size.height-30, CGRectGetWidth([UIScreen mainScreen].bounds), 30);
         BMImageView *imageView =  [[BMImageView alloc]initWithImageName:imageURL title:title x:WIDTH*i tFrame:titleRect iHeight:imageSV.frame.size.height titleHidden:NO];
         
         //制定AOView委托
@@ -237,7 +238,7 @@ static  int pageNumber;//页码
 {
     CGRect rect =  CGRectMake(0, 180, 50, 30);
     pageControl = [[UIPageControl alloc]initWithFrame:rect];
-    
+    pageControl.userInteractionEnabled = NO;
     if (_pageCenter.y == 0.0) {
         _pageCenter.y = self.frame.size.height - 15;
         _pageCenter.x = pageControl.center.x;
@@ -246,7 +247,9 @@ static  int pageNumber;//页码
     pageControl.numberOfPages = count;
     pageControl.pageIndicatorTintColor = [UIColor darkGrayColor];
     pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
+    pageControl.currentPage = 0;
     [self addSubview:pageControl];
+    tempIndex = 0;
     
 }
 //NSTimer方法
@@ -312,18 +315,17 @@ static  int pageNumber;//页码
 // scrollview 委托函数
 - (void)scrollViewDidScroll:(UIScrollView *)sender
 {
+    NSLog(@"scrollViewDidScroll");
     CGFloat pagewidth = imageSV.frame.size.width;
     int page = floor((imageSV.contentOffset.x - pagewidth/([imageNameArr count]+2))/pagewidth)+1;
     page --;  // 默认从第二页开始
-    pageControl.currentPage = page;
+    tempIndex = page;
 }
 // scrollview 委托函数
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     CGFloat pagewidth = imageSV.frame.size.width;
     int currentPage = floor((imageSV.contentOffset.x - pagewidth/ ([imageNameArr count]+2)) / pagewidth) + 1;
-    //    int currentPage_ = (int)self.scrollView.contentOffset.x/320; // 和上面两行效果一样
-    //    NSLog(@"currentPage_==%d",currentPage_);
     if (currentPage==0)
     {
         [imageSV scrollRectToVisible:CGRectMake(WIDTH * [imageNameArr count],0,WIDTH,HEIGHT) animated:NO]; // 序号0 最后1页
@@ -332,20 +334,22 @@ static  int pageNumber;//页码
     {
         [imageSV scrollRectToVisible:CGRectMake(WIDTH,0,WIDTH,HEIGHT) animated:NO]; // 最后+1,循环第1页
     }
+    pageControl.currentPage = tempIndex;
 }
 // pagecontrol 选择器的方法
 - (void)turnPage
 {
     NSInteger page = pageControl.currentPage; // 获取当前的page
+    page++;
+    page = page > imageNameArr.count-1 ? 0 : page ;
+    tempIndex = page;
+    
     [imageSV scrollRectToVisible:CGRectMake(WIDTH*(page+1),0,WIDTH,HEIGHT) animated:YES]; // 触摸pagecontroller那个点点 往后翻一页 +1
+    pageControl.currentPage = page;
 }
 // 定时器 绑定的方法
 - (void)runTimePage
 {
-    NSInteger page = pageControl.currentPage; // 获取当前的page
-    page++;
-    page = page > imageNameArr.count-1 ? 0 : page ;
-    pageControl.currentPage = page;
     [self turnPage];
 }
 
