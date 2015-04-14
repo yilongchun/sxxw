@@ -61,9 +61,9 @@
     ViewController1 *vc3 = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController1"];
     vc3.bclassid = 4;
     
-    UITabBarItem *item1 = [[UITabBarItem alloc] initWithTitle:@"中国三峡工程报" image:[UIImage imageNamed:@"01(1)"] tag:1];
-    UITabBarItem *item2 = [[UITabBarItem alloc] initWithTitle:@"中国三峡杂志" image:[UIImage imageNamed:@"02(1)"] tag:2];
-    UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"清洁能源论坛" image:[UIImage imageNamed:@"03(1)"] tag:3];
+    UITabBarItem *item1 = [[UITabBarItem alloc] initWithTitle:@"中国三峡工程报" image:[UIImage imageNamed:@"01"] tag:1];
+    UITabBarItem *item2 = [[UITabBarItem alloc] initWithTitle:@"中国三峡杂志" image:[UIImage imageNamed:@"02"] tag:2];
+    UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"清洁能源论坛" image:[UIImage imageNamed:@"03"] tag:3];
     
     vc1.tabBarItem = item1;
     vc2.tabBarItem = item2;

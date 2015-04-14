@@ -315,7 +315,6 @@ static  int pageNumber;//页码
 // scrollview 委托函数
 - (void)scrollViewDidScroll:(UIScrollView *)sender
 {
-    NSLog(@"scrollViewDidScroll");
     CGFloat pagewidth = imageSV.frame.size.width;
     int page = floor((imageSV.contentOffset.x - pagewidth/([imageNameArr count]+2))/pagewidth)+1;
     page --;  // 默认从第二页开始
