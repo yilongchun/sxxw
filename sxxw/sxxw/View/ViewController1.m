@@ -64,8 +64,11 @@
 //    self.view.backgroundColor = [UIColor colorWithWhite:0.902 alpha:1.000];
     
     self.shouldObserving = YES;
-    
-    _scrollMenu = [[XHScrollMenu alloc] initWithFrame:CGRectMake(0, 20, CGRectGetWidth(self.view.bounds), 44)];
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
+        _scrollMenu = [[XHScrollMenu alloc] initWithFrame:CGRectMake(0, 20, CGRectGetWidth(self.view.bounds), 44)];
+    }else{
+        _scrollMenu = [[XHScrollMenu alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), 44)];
+    }
     _scrollMenu.backgroundColor = BACKGROUND_COLOR;
     _scrollMenu.indicatorTintColor = DEFAULT_BLUE_COLOR;
     _scrollMenu.hasShadowForBoth = NO;
