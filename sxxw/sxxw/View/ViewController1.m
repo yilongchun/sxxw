@@ -171,9 +171,7 @@
 
 -(void)loadNewsList{
     [self showHudInView:self.view hint:@"加载中"];
-    NSArray *dataSource = [NSArray array];
-    [dataSourceArray replaceObjectAtIndex:self.scrollMenu.selectedIndex withObject:dataSource];
-    [toppicnewsArray replaceObjectAtIndex:self.scrollMenu.selectedIndex withObject:dataSource];
+    
     XHMenu *menu = [self.menus objectAtIndex:self.scrollMenu.selectedIndex];
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setValue:@"select" forKey:@"dealType"];
@@ -185,6 +183,10 @@
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
     [manager GET:str parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON: %@", operation.responseString);
+        NSArray *dataSource = [NSArray array];
+        [dataSourceArray replaceObjectAtIndex:self.scrollMenu.selectedIndex withObject:dataSource];
+        [toppicnewsArray replaceObjectAtIndex:self.scrollMenu.selectedIndex withObject:dataSource];
+        
         NSString *result = [NSString stringWithFormat:@"[%@]",[operation responseString]];
         NSError *error;
         NSArray *array = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
@@ -214,6 +216,8 @@
         NSLog(@"发生错误！%@",error);
         [self hideHud];
         [self showHint:@"连接失败"];
+        UITableView *table = [tableArray objectAtIndex:self.scrollMenu.selectedIndex];
+        [table stopLoadWithState:PullDownLoadState];
     }];
 }
 
@@ -399,18 +403,21 @@
         if (cell == nil) {
             cell = [[[NSBundle mainBundle] loadNibNamed:@"NewsTableViewCell" owner:self options:nil] lastObject];
         }
-        NSDictionary *info = [[dataSourceArray objectAtIndex:self.scrollMenu.selectedIndex] objectAtIndex:indexPath.row + 2];
-        //    NSString *newsid = [info objectForKey:@"id"];
-        //    NSString *newsdate = [info objectForKey:@"newspath"];
-        NSNumber *plnum = [info objectForKey:@"plnum"];
-        NSString *smalltext = [info objectForKey:@"smalltext"];
-        NSString *title = [info objectForKey:@"title"];
-        NSString *titlepic = [info objectForKey:@"titlepic"];
-//        cell.newsimageurl = [NSString stringWithFormat:@"%@%@",API_HOST,titlepic];
-        cell.newstitle.text = title;
-        cell.newscontent.text = smalltext;
-        cell.newsreplynum.text = [NSString stringWithFormat:@"%d",[plnum intValue]];
-        [cell.newsimage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",API_HOST,titlepic]] placeholderImage:[UIImage imageNamed:@"defalut_pic"]];
+        if ([[dataSourceArray objectAtIndex:self.scrollMenu.selectedIndex] count] > indexPath.row + 2) {
+            NSDictionary *info = [[dataSourceArray objectAtIndex:self.scrollMenu.selectedIndex] objectAtIndex:indexPath.row + 2];
+            //    NSString *newsid = [info objectForKey:@"id"];
+            //    NSString *newsdate = [info objectForKey:@"newspath"];
+            NSNumber *plnum = [info objectForKey:@"plnum"];
+            NSString *smalltext = [info objectForKey:@"smalltext"];
+            NSString *title = [info objectForKey:@"title"];
+            NSString *titlepic = [info objectForKey:@"titlepic"];
+            //        cell.newsimageurl = [NSString stringWithFormat:@"%@%@",API_HOST,titlepic];
+            cell.newstitle.text = title;
+            cell.newscontent.text = smalltext;
+            cell.newsreplynum.text = [NSString stringWithFormat:@"%d",[plnum intValue]];
+            [cell.newsimage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",API_HOST,titlepic]] placeholderImage:[UIImage imageNamed:@"defalut_pic"]];
+        }
+        
         return cell;
     }
     
@@ -418,7 +425,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
     NSDictionary *info = [[dataSourceArray objectAtIndex:self.scrollMenu.selectedIndex] objectAtIndex:indexPath.row + 2];
     NSString *newsid = [info objectForKey:@"id"];
     XHMenu *menu =  [self.menus objectAtIndex:self.scrollMenu.selectedIndex];
