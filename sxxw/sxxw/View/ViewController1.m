@@ -7,7 +7,6 @@
 //
 
 #import "ViewController1.h"
-#import "XDKAirMenuController.h"
 #import "XHMenu.h"
 #import "XHScrollMenu.h"
 #import "NewsTableViewCell.h"
@@ -52,10 +51,6 @@
     self.buttonBackground.backgroundColor = BACKGROUND_COLOR;
     self.view.backgroundColor = BACKGROUND_COLOR;
     
-//    UIImage *image = [UIImage imageNamed:@"menu-button"];
-//    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(leftMenu)];
-//    self.navigationItem.leftBarButtonItem = leftItem;
-    
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
     self.navigationItem.backBarButtonItem = backItem;
     backItem.title = @"返回";
@@ -65,9 +60,9 @@
     
     self.shouldObserving = YES;
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
-        _scrollMenu = [[XHScrollMenu alloc] initWithFrame:CGRectMake(0, 20, CGRectGetWidth(self.view.bounds), 44)];
+        _scrollMenu = [[XHScrollMenu alloc] initWithFrame:CGRectMake(40, 20, CGRectGetWidth(self.view.bounds)-40, 44)];
     }else{
-        _scrollMenu = [[XHScrollMenu alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), 44)];
+        _scrollMenu = [[XHScrollMenu alloc] initWithFrame:CGRectMake(40, 0, CGRectGetWidth(self.view.bounds)-40, 44)];
     }
     _scrollMenu.backgroundColor = BACKGROUND_COLOR;
     _scrollMenu.indicatorTintColor = DEFAULT_BLUE_COLOR;
@@ -495,12 +490,4 @@
 }
 */
 
-- (IBAction)leftmenu:(id)sender {
-    XDKAirMenuController *menu = [XDKAirMenuController sharedMenu];
-    
-    if (menu.isMenuOpened)
-        [menu closeMenuAnimated];
-    else
-        [menu openMenuAnimated];
-}
 @end

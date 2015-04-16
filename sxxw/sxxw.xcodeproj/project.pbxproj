@@ -18,16 +18,19 @@
 		E40A6DF11AD69D480090AF75 /* UIViewController+DismissKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = E40A6DE61AD69D480090AF75 /* UIViewController+DismissKeyboard.m */; };
 		E40A6DF21AD69D480090AF75 /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E40A6DE81AD69D480090AF75 /* UIViewController+HUD.m */; };
 		E40A6DF51AD6D71D0090AF75 /* NewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E40A6DF41AD6D71D0090AF75 /* NewsDetailViewController.m */; };
+		E48DA2AA1ADFBDF300C96D0A /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = E48DA2A51ADFBDF300C96D0A /* RECommonFunctions.m */; };
+		E48DA2AB1ADFBDF300C96D0A /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E48DA2A71ADFBDF300C96D0A /* RESideMenu.m */; };
+		E48DA2AC1ADFBDF300C96D0A /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E48DA2A91ADFBDF300C96D0A /* UIViewController+RESideMenu.m */; };
+		E48DA2AF1ADFBE4A00C96D0A /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E48DA2AE1ADFBE4A00C96D0A /* RootViewController.m */; };
+		E48DA2B21ADFC15100C96D0A /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E48DA2B11ADFC15100C96D0A /* LeftMenuViewController.m */; };
 		E4EA88951AD3D8B70065F271 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EA88941AD3D8B70065F271 /* main.m */; };
 		E4EA88981AD3D8B70065F271 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EA88971AD3D8B70065F271 /* AppDelegate.m */; };
-		E4EA889B1AD3D8B70065F271 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EA889A1AD3D8B70065F271 /* ViewController.m */; };
 		E4EA889E1AD3D8B70065F271 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4EA889C1AD3D8B70065F271 /* Main.storyboard */; };
 		E4EA88A01AD3D8B70065F271 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4EA889F1AD3D8B70065F271 /* Images.xcassets */; };
 		E4EA88A31AD3D8B70065F271 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4EA88A11AD3D8B70065F271 /* LaunchScreen.xib */; };
 		E4EA88AF1AD3D8B70065F271 /* sxxwTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EA88AE1AD3D8B70065F271 /* sxxwTests.m */; };
 		E4EA88BA1AD3DBA30065F271 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4EA88B91AD3DBA30065F271 /* Foundation.framework */; };
 		E4EA88BC1AD3DBAF0065F271 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4EA88BB1AD3DBAF0065F271 /* UIKit.framework */; };
-		E4EA88C01AD3DFF60065F271 /* XDKAirMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EA88BF1AD3DFF60065F271 /* XDKAirMenuController.m */; };
 		E4EA88C81AD3E6930065F271 /* MyTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EA88C71AD3E6930065F271 /* MyTabbarController.m */; };
 		E4EA88CB1AD3E6C00065F271 /* ViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EA88CA1AD3E6C00065F271 /* ViewController1.m */; };
 		E4EA88CE1AD3E6CC0065F271 /* ViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EA88CD1AD3E6CC0065F271 /* ViewController2.m */; };
@@ -99,13 +102,21 @@
 		E40A6DE81AD69D480090AF75 /* UIViewController+HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HUD.m"; sourceTree = "<group>"; };
 		E40A6DF31AD6D71D0090AF75 /* NewsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsDetailViewController.h; path = View/NewsDetailViewController.h; sourceTree = "<group>"; };
 		E40A6DF41AD6D71D0090AF75 /* NewsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsDetailViewController.m; path = View/NewsDetailViewController.m; sourceTree = "<group>"; };
+		E48DA2A41ADFBDF300C96D0A /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
+		E48DA2A51ADFBDF300C96D0A /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
+		E48DA2A61ADFBDF300C96D0A /* RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESideMenu.h; sourceTree = "<group>"; };
+		E48DA2A71ADFBDF300C96D0A /* RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenu.m; sourceTree = "<group>"; };
+		E48DA2A81ADFBDF300C96D0A /* UIViewController+RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RESideMenu.h"; sourceTree = "<group>"; };
+		E48DA2A91ADFBDF300C96D0A /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
+		E48DA2AD1ADFBE4A00C96D0A /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		E48DA2AE1ADFBE4A00C96D0A /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		E48DA2B01ADFC15100C96D0A /* LeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuViewController.h; sourceTree = "<group>"; };
+		E48DA2B11ADFC15100C96D0A /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewController.m; sourceTree = "<group>"; };
 		E4EA888F1AD3D8B70065F271 /* sxxw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sxxw.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4EA88931AD3D8B70065F271 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4EA88941AD3D8B70065F271 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E4EA88961AD3D8B70065F271 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E4EA88971AD3D8B70065F271 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E4EA88991AD3D8B70065F271 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E4EA889A1AD3D8B70065F271 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		E4EA889D1AD3D8B70065F271 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E4EA889F1AD3D8B70065F271 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E4EA88A21AD3D8B70065F271 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -114,8 +125,6 @@
 		E4EA88AE1AD3D8B70065F271 /* sxxwTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = sxxwTests.m; sourceTree = "<group>"; };
 		E4EA88B91AD3DBA30065F271 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E4EA88BB1AD3DBAF0065F271 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		E4EA88BE1AD3DFF60065F271 /* XDKAirMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDKAirMenuController.h; sourceTree = "<group>"; };
-		E4EA88BF1AD3DFF60065F271 /* XDKAirMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDKAirMenuController.m; sourceTree = "<group>"; };
 		E4EA88C41AD3E3390065F271 /* sxxw.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sxxw.pch; sourceTree = "<group>"; };
 		E4EA88C61AD3E6930065F271 /* MyTabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyTabbarController.h; path = View/MyTabbarController.h; sourceTree = "<group>"; };
 		E4EA88C71AD3E6930065F271 /* MyTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyTabbarController.m; path = View/MyTabbarController.m; sourceTree = "<group>"; };
@@ -236,6 +245,19 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		E48DA2A31ADFBDF300C96D0A /* RESideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				E48DA2A41ADFBDF300C96D0A /* RECommonFunctions.h */,
+				E48DA2A51ADFBDF300C96D0A /* RECommonFunctions.m */,
+				E48DA2A61ADFBDF300C96D0A /* RESideMenu.h */,
+				E48DA2A71ADFBDF300C96D0A /* RESideMenu.m */,
+				E48DA2A81ADFBDF300C96D0A /* UIViewController+RESideMenu.h */,
+				E48DA2A91ADFBDF300C96D0A /* UIViewController+RESideMenu.m */,
+			);
+			path = RESideMenu;
+			sourceTree = "<group>";
+		};
 		E4EA88861AD3D8B70065F271 = {
 			isa = PBXGroup;
 			children = (
@@ -260,20 +282,22 @@
 			children = (
 				E4EA88961AD3D8B70065F271 /* AppDelegate.h */,
 				E4EA88971AD3D8B70065F271 /* AppDelegate.m */,
-				E4EA88991AD3D8B70065F271 /* ViewController.h */,
-				E4EA889A1AD3D8B70065F271 /* ViewController.m */,
+				E48DA2AD1ADFBE4A00C96D0A /* RootViewController.h */,
+				E48DA2AE1ADFBE4A00C96D0A /* RootViewController.m */,
+				E48DA2B01ADFC15100C96D0A /* LeftMenuViewController.h */,
+				E48DA2B11ADFC15100C96D0A /* LeftMenuViewController.m */,
 				E4EA889C1AD3D8B70065F271 /* Main.storyboard */,
 				E4EA889F1AD3D8B70065F271 /* Images.xcassets */,
 				E4EA88A11AD3D8B70065F271 /* LaunchScreen.xib */,
 				E4EA88D71AD3EDC60065F271 /* JYSlideSegmentController.h */,
 				E4EA88D81AD3EDC60065F271 /* JYSlideSegmentController.m */,
 				E4EA88C51AD3E6530065F271 /* View */,
+				E48DA2A31ADFBDF300C96D0A /* RESideMenu */,
 				E40A6DD41AD69D480090AF75 /* Category */,
 				E4EF38B81ADBD7440014DC7E /* BMAdScrollView */,
 				E4FFCA2B1AD68E8900E05E80 /* AFNetworking */,
 				E4FFCA511AD68E8900E05E80 /* MBProgressHUD */,
 				E4EA89151AD435350065F271 /* Source */,
-				E4EA88BD1AD3DFF60065F271 /* XDKAirMenu */,
 				E4EA88921AD3D8B70065F271 /* Supporting Files */,
 			);
 			path = sxxw;
@@ -313,15 +337,6 @@
 				E4EA88B91AD3DBA30065F271 /* Foundation.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E4EA88BD1AD3DFF60065F271 /* XDKAirMenu */ = {
-			isa = PBXGroup;
-			children = (
-				E4EA88BE1AD3DFF60065F271 /* XDKAirMenuController.h */,
-				E4EA88BF1AD3DFF60065F271 /* XDKAirMenuController.m */,
-			);
-			path = XDKAirMenu;
 			sourceTree = "<group>";
 		};
 		E4EA88C51AD3E6530065F271 /* View */ = {
@@ -556,7 +571,9 @@
 				E4FFCA5B1AD68E8900E05E80 /* AFURLConnectionOperation.m in Sources */,
 				E40A6DF51AD6D71D0090AF75 /* NewsDetailViewController.m in Sources */,
 				E4EA89271AD435350065F271 /* UIScrollView+XHVisibleCenterScroll.m in Sources */,
+				E48DA2B21ADFC15100C96D0A /* LeftMenuViewController.m in Sources */,
 				E40A6DEE1AD69D480090AF75 /* UIButton+UIButtonImageWithLable.m in Sources */,
+				E48DA2AA1ADFBDF300C96D0A /* RECommonFunctions.m in Sources */,
 				E4FFCA661AD68E8900E05E80 /* UIWebView+AFNetworking.m in Sources */,
 				E4FFCA6C1AD690FB00E05E80 /* NewsTableViewCell.m in Sources */,
 				E4FFCA581AD68E8900E05E80 /* AFHTTPSessionManager.m in Sources */,
@@ -564,20 +581,19 @@
 				E40A6DE91AD69D480090AF75 /* NSDate+Category.m in Sources */,
 				E4FFCA591AD68E8900E05E80 /* AFNetworkReachabilityManager.m in Sources */,
 				E40A6DEF1AD69D480090AF75 /* UIResponder+Router.m in Sources */,
-				E4EA889B1AD3D8B70065F271 /* ViewController.m in Sources */,
 				E40A6DF11AD69D480090AF75 /* UIViewController+DismissKeyboard.m in Sources */,
 				E40A6DF21AD69D480090AF75 /* UIViewController+HUD.m in Sources */,
 				E40A6DEA1AD69D480090AF75 /* NSDateFormatter+Category.m in Sources */,
 				E4EA88CB1AD3E6C00065F271 /* ViewController1.m in Sources */,
 				E4EA88D11AD3E6D80065F271 /* ViewController3.m in Sources */,
 				E40A6DED1AD69D480090AF75 /* NSString+Valid.m in Sources */,
-				E4EA88C01AD3DFF60065F271 /* XDKAirMenuController.m in Sources */,
 				E4FFCA5A1AD68E8900E05E80 /* AFSecurityPolicy.m in Sources */,
 				E4FFCA641AD68E8900E05E80 /* UIProgressView+AFNetworking.m in Sources */,
 				E4EF38BB1ADBD7440014DC7E /* BMAdScrollView.m in Sources */,
 				E4EA88981AD3D8B70065F271 /* AppDelegate.m in Sources */,
 				E40A6DEB1AD69D480090AF75 /* NSDictionary+Category.m in Sources */,
 				E4FFCA621AD68E8900E05E80 /* UIButton+AFNetworking.m in Sources */,
+				E48DA2AF1ADFBE4A00C96D0A /* RootViewController.m in Sources */,
 				E4EA89281AD435350065F271 /* XHIndicatorView.m in Sources */,
 				E40A6DEC1AD69D480090AF75 /* NSString+HXAddtions.m in Sources */,
 				E4EA88D51AD3EAC60065F271 /* LoginViewController.m in Sources */,
@@ -590,11 +606,13 @@
 				E4EA88D91AD3EDC60065F271 /* JYSlideSegmentController.m in Sources */,
 				E4EA892B1AD435350065F271 /* XHScrollMenu.m in Sources */,
 				E4FFCA681AD68E8900E05E80 /* MBProgressHUD.m in Sources */,
+				E48DA2AB1ADFBDF300C96D0A /* RESideMenu.m in Sources */,
 				E4EA892A1AD435350065F271 /* XHMenuButton.m in Sources */,
 				E4FFCA5C1AD68E8900E05E80 /* AFURLRequestSerialization.m in Sources */,
 				E4FFCA5F1AD68E8900E05E80 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				E4FFCA561AD68E8900E05E80 /* AFHTTPRequestOperation.m in Sources */,
 				E4FFCA601AD68E8900E05E80 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				E48DA2AC1ADFBDF300C96D0A /* UIViewController+RESideMenu.m in Sources */,
 				E4FFCA5D1AD68E8900E05E80 /* AFURLResponseSerialization.m in Sources */,
 				E4EA88C81AD3E6930065F271 /* MyTabbarController.m in Sources */,
 			);

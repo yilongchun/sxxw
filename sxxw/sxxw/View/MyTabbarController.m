@@ -7,12 +7,7 @@
 //
 
 #import "MyTabbarController.h"
-
-#import "XDKAirMenuController.h"
-
 #import "ViewController1.h"
-
-
 #import "ViewController2.h"
 #import "ViewController3.h"
 
@@ -34,9 +29,9 @@
     
     [self.navigationController setNavigationBarHidden:YES];
     
-    UIImage *image = [UIImage imageNamed:@"menu-button"];
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(leftMenu)];
-    self.navigationItem.leftBarButtonItem = leftItem;
+//    UIImage *image = [UIImage imageNamed:@"menu-button"];
+//    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(leftMenu)];
+//    self.navigationItem.leftBarButtonItem = leftItem;
     
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
     self.navigationItem.backBarButtonItem = backItem;
@@ -74,15 +69,6 @@
 
     self.selectedIndex = 0;
 //    [[self tabBar] setSelectedImageTintColor:[UIColor colorWithRed:116/255.0 green:176/255.0 blue:64/255.0 alpha:1]];
-}
-
-- (void)leftMenu{
-    XDKAirMenuController *menu = [XDKAirMenuController sharedMenu];
-    
-    if (menu.isMenuOpened)
-        [menu closeMenuAnimated];
-    else
-        [menu openMenuAnimated];
 }
 
 -(void)viewWillAppear:(BOOL)animated

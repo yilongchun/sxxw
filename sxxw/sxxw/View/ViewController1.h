@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "UIScrollView+PullLoad.h"
+#import "RESideMenu.h"
 
 @interface ViewController1 : UIViewController<UITableViewDataSource,UITableViewDelegate,PullDelegate>
 
 @property int bclassid;
 @property (weak, nonatomic) IBOutlet UIView *buttonBackground;
-- (IBAction)leftmenu:(id)sender;
+
 @end
