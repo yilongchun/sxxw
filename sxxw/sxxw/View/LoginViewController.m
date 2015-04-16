@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "IQKeyboardManager.h"
 
 @interface LoginViewController ()
 
@@ -17,11 +18,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    //self.view.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1.0f];
     self.title = @"用户登录";
     
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 40)];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.text = @"账号:";
+    label.textColor = [UIColor grayColor];
+    label.font = [UIFont systemFontOfSize:14];
+    label.backgroundColor = [UIColor clearColor];
+    self.username.leftViewMode = UITextFieldViewModeAlways;
+    self.username.leftView = label;
+    self.username.borderStyle=UITextBorderStyleNone;
+    [self.username.layer setMasksToBounds:YES];
+    [self.username.layer setBorderWidth:0.6f];
+    [self.username.layer setBorderColor:[UIColor lightGrayColor].CGColor];
     
-    
+    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 40)];
+    label2.textAlignment = NSTextAlignmentCenter;
+    label2.text = @"密码:";
+    label2.textColor = [UIColor grayColor];
+    label2.font = [UIFont systemFontOfSize:14];
+    label2.backgroundColor = [UIColor clearColor];
+    self.password.leftViewMode = UITextFieldViewModeAlways;
+    self.password.leftView = label2;
+    self.password.layer.borderColor = [UIColor grayColor].CGColor;
+    self.password.borderStyle=UITextBorderStyleNone;
+    [self.password.layer setMasksToBounds:YES];
+    [self.password.layer setBorderWidth:0.6f];
+    [self.password.layer setBorderColor:[UIColor lightGrayColor].CGColor];
 }
 
 
@@ -45,5 +70,14 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)login:(id)sender {
+    [[IQKeyboardManager sharedManager] resignFirstResponder];
+}
+
+- (IBAction)reg:(id)sender {
+    [[IQKeyboardManager sharedManager] resignFirstResponder];
+}
+
 
 @end

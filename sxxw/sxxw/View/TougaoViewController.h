@@ -10,4 +10,13 @@
 
 @interface TougaoViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *lanmuLabel;
+@property (weak, nonatomic) IBOutlet UIView *lanmu;
+@property (weak, nonatomic) IBOutlet UITextField *titleText;
+@property (weak, nonatomic) IBOutlet UITextField *tougaouser;
+
+- (IBAction)takePicture:(id)sender;
+- (IBAction)choosePicture:(id)sender;
+- (IBAction)save:(id)sender;
+
 @end
