@@ -1,28 +1,33 @@
 //
-//  ViewController3.m
+//  UserRegisterViewController.m
 //  sxxw
 //
-//  Created by yons on 15-4-7.
+//  Created by yons on 15-4-16.
 //  Copyright (c) 2015年 weiyida. All rights reserved.
 //
 
-#import "ViewController3.h"
+#import "UserRegisterViewController.h"
 
-@interface ViewController3 ()
+@interface UserRegisterViewController ()
 
 @end
 
-@implementation ViewController3
+@implementation UserRegisterViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.title = @"用户注册";
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 /*

@@ -1,28 +1,33 @@
 //
-//  ViewController2.m
+//  TougaoViewController.m
 //  sxxw
 //
-//  Created by yons on 15-4-7.
+//  Created by yons on 15-4-16.
 //  Copyright (c) 2015年 weiyida. All rights reserved.
 //
 
-#import "ViewController2.h"
+#import "TougaoViewController.h"
 
-@interface ViewController2 ()
+@interface TougaoViewController ()
 
 @end
 
-@implementation ViewController2
+@implementation TougaoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.title = @"投稿反馈";
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 /*

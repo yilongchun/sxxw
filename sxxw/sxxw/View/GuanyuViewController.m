@@ -1,23 +1,23 @@
 //
-//  NewsDetailViewController.m
+//  GuanyuViewController.m
 //  sxxw
 //
-//  Created by yons on 15-4-9.
+//  Created by yons on 15-4-16.
 //  Copyright (c) 2015年 weiyida. All rights reserved.
 //
 
-#import "NewsDetailViewController.h"
+#import "GuanyuViewController.h"
 
-@interface NewsDetailViewController ()
+@interface GuanyuViewController ()
 
 @end
 
-@implementation NewsDetailViewController
+@implementation GuanyuViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.title = @"关于我们";
     [self.mywebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
 }
 

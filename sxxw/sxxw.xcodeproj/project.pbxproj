@@ -23,6 +23,9 @@
 		E48DA2AC1ADFBDF300C96D0A /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E48DA2A91ADFBDF300C96D0A /* UIViewController+RESideMenu.m */; };
 		E48DA2AF1ADFBE4A00C96D0A /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E48DA2AE1ADFBE4A00C96D0A /* RootViewController.m */; };
 		E48DA2B21ADFC15100C96D0A /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E48DA2B11ADFC15100C96D0A /* LeftMenuViewController.m */; };
+		E48DA2B51ADFD54700C96D0A /* GuanyuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E48DA2B41ADFD54700C96D0A /* GuanyuViewController.m */; };
+		E48DA2B81ADFD9BE00C96D0A /* UserRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E48DA2B71ADFD9BE00C96D0A /* UserRegisterViewController.m */; };
+		E48DA2BB1ADFD9FA00C96D0A /* TougaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E48DA2BA1ADFD9FA00C96D0A /* TougaoViewController.m */; };
 		E4EA88951AD3D8B70065F271 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EA88941AD3D8B70065F271 /* main.m */; };
 		E4EA88981AD3D8B70065F271 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EA88971AD3D8B70065F271 /* AppDelegate.m */; };
 		E4EA889E1AD3D8B70065F271 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4EA889C1AD3D8B70065F271 /* Main.storyboard */; };
@@ -33,8 +36,6 @@
 		E4EA88BC1AD3DBAF0065F271 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4EA88BB1AD3DBAF0065F271 /* UIKit.framework */; };
 		E4EA88C81AD3E6930065F271 /* MyTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EA88C71AD3E6930065F271 /* MyTabbarController.m */; };
 		E4EA88CB1AD3E6C00065F271 /* ViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EA88CA1AD3E6C00065F271 /* ViewController1.m */; };
-		E4EA88CE1AD3E6CC0065F271 /* ViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EA88CD1AD3E6CC0065F271 /* ViewController2.m */; };
-		E4EA88D11AD3E6D80065F271 /* ViewController3.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EA88D01AD3E6D80065F271 /* ViewController3.m */; };
 		E4EA88D51AD3EAC60065F271 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EA88D31AD3EAC60065F271 /* LoginViewController.m */; };
 		E4EA88D91AD3EDC60065F271 /* JYSlideSegmentController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EA88D81AD3EDC60065F271 /* JYSlideSegmentController.m */; };
 		E4EA89241AD435350065F271 /* leftShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EA89171AD435350065F271 /* leftShadow@2x.png */; };
@@ -112,6 +113,12 @@
 		E48DA2AE1ADFBE4A00C96D0A /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		E48DA2B01ADFC15100C96D0A /* LeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuViewController.h; sourceTree = "<group>"; };
 		E48DA2B11ADFC15100C96D0A /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewController.m; sourceTree = "<group>"; };
+		E48DA2B31ADFD54700C96D0A /* GuanyuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GuanyuViewController.h; path = View/GuanyuViewController.h; sourceTree = "<group>"; };
+		E48DA2B41ADFD54700C96D0A /* GuanyuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GuanyuViewController.m; path = View/GuanyuViewController.m; sourceTree = "<group>"; };
+		E48DA2B61ADFD9BE00C96D0A /* UserRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserRegisterViewController.h; path = View/UserRegisterViewController.h; sourceTree = "<group>"; };
+		E48DA2B71ADFD9BE00C96D0A /* UserRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserRegisterViewController.m; path = View/UserRegisterViewController.m; sourceTree = "<group>"; };
+		E48DA2B91ADFD9FA00C96D0A /* TougaoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TougaoViewController.h; path = View/TougaoViewController.h; sourceTree = "<group>"; };
+		E48DA2BA1ADFD9FA00C96D0A /* TougaoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TougaoViewController.m; path = View/TougaoViewController.m; sourceTree = "<group>"; };
 		E4EA888F1AD3D8B70065F271 /* sxxw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sxxw.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4EA88931AD3D8B70065F271 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4EA88941AD3D8B70065F271 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -130,10 +137,6 @@
 		E4EA88C71AD3E6930065F271 /* MyTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyTabbarController.m; path = View/MyTabbarController.m; sourceTree = "<group>"; };
 		E4EA88C91AD3E6C00065F271 /* ViewController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController1.h; path = View/ViewController1.h; sourceTree = "<group>"; };
 		E4EA88CA1AD3E6C00065F271 /* ViewController1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController1.m; path = View/ViewController1.m; sourceTree = "<group>"; };
-		E4EA88CC1AD3E6CC0065F271 /* ViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController2.h; path = View/ViewController2.h; sourceTree = "<group>"; };
-		E4EA88CD1AD3E6CC0065F271 /* ViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController2.m; path = View/ViewController2.m; sourceTree = "<group>"; };
-		E4EA88CF1AD3E6D80065F271 /* ViewController3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController3.h; path = View/ViewController3.h; sourceTree = "<group>"; };
-		E4EA88D01AD3E6D80065F271 /* ViewController3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController3.m; path = View/ViewController3.m; sourceTree = "<group>"; };
 		E4EA88D21AD3EAC60065F271 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = View/LoginViewController.h; sourceTree = "<group>"; };
 		E4EA88D31AD3EAC60065F271 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = View/LoginViewController.m; sourceTree = "<group>"; };
 		E4EA88D71AD3EDC60065F271 /* JYSlideSegmentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYSlideSegmentController.h; sourceTree = "<group>"; };
@@ -351,12 +354,14 @@
 				E4FFCA6B1AD690FB00E05E80 /* NewsTableViewCell.xib */,
 				E40A6DF31AD6D71D0090AF75 /* NewsDetailViewController.h */,
 				E40A6DF41AD6D71D0090AF75 /* NewsDetailViewController.m */,
-				E4EA88CC1AD3E6CC0065F271 /* ViewController2.h */,
-				E4EA88CD1AD3E6CC0065F271 /* ViewController2.m */,
-				E4EA88CF1AD3E6D80065F271 /* ViewController3.h */,
-				E4EA88D01AD3E6D80065F271 /* ViewController3.m */,
 				E4EA88D21AD3EAC60065F271 /* LoginViewController.h */,
 				E4EA88D31AD3EAC60065F271 /* LoginViewController.m */,
+				E48DA2B61ADFD9BE00C96D0A /* UserRegisterViewController.h */,
+				E48DA2B71ADFD9BE00C96D0A /* UserRegisterViewController.m */,
+				E48DA2B91ADFD9FA00C96D0A /* TougaoViewController.h */,
+				E48DA2BA1ADFD9FA00C96D0A /* TougaoViewController.m */,
+				E48DA2B31ADFD54700C96D0A /* GuanyuViewController.h */,
+				E48DA2B41ADFD54700C96D0A /* GuanyuViewController.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -565,7 +570,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E48DA2B51ADFD54700C96D0A /* GuanyuViewController.m in Sources */,
 				E4FFCA5E1AD68E8900E05E80 /* AFURLSessionManager.m in Sources */,
+				E48DA2B81ADFD9BE00C96D0A /* UserRegisterViewController.m in Sources */,
 				E4FFCA631AD68E8900E05E80 /* UIImageView+AFNetworking.m in Sources */,
 				E4FFCA651AD68E8900E05E80 /* UIRefreshControl+AFNetworking.m in Sources */,
 				E4FFCA5B1AD68E8900E05E80 /* AFURLConnectionOperation.m in Sources */,
@@ -585,7 +592,6 @@
 				E40A6DF21AD69D480090AF75 /* UIViewController+HUD.m in Sources */,
 				E40A6DEA1AD69D480090AF75 /* NSDateFormatter+Category.m in Sources */,
 				E4EA88CB1AD3E6C00065F271 /* ViewController1.m in Sources */,
-				E4EA88D11AD3E6D80065F271 /* ViewController3.m in Sources */,
 				E40A6DED1AD69D480090AF75 /* NSString+Valid.m in Sources */,
 				E4FFCA5A1AD68E8900E05E80 /* AFSecurityPolicy.m in Sources */,
 				E4FFCA641AD68E8900E05E80 /* UIProgressView+AFNetworking.m in Sources */,
@@ -598,11 +604,11 @@
 				E40A6DEC1AD69D480090AF75 /* NSString+HXAddtions.m in Sources */,
 				E4EA88D51AD3EAC60065F271 /* LoginViewController.m in Sources */,
 				E4FFCA571AD68E8900E05E80 /* AFHTTPRequestOperationManager.m in Sources */,
+				E48DA2BB1ADFD9FA00C96D0A /* TougaoViewController.m in Sources */,
 				E4EA88951AD3D8B70065F271 /* main.m in Sources */,
 				E4FFCA611AD68E8900E05E80 /* UIAlertView+AFNetworking.m in Sources */,
 				E4EA89291AD435350065F271 /* XHMenu.m in Sources */,
 				E4FFCA671AD68E8900E05E80 /* MBProgressHUD+Add.m in Sources */,
-				E4EA88CE1AD3E6CC0065F271 /* ViewController2.m in Sources */,
 				E4EA88D91AD3EDC60065F271 /* JYSlideSegmentController.m in Sources */,
 				E4EA892B1AD435350065F271 /* XHScrollMenu.m in Sources */,
 				E4FFCA681AD68E8900E05E80 /* MBProgressHUD.m in Sources */,

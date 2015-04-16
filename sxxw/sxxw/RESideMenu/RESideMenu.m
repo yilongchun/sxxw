@@ -113,7 +113,7 @@
     _contentViewShadowRadius = 8.0f;
     _contentViewFadeOutAlpha = 1.0f;
     _contentViewInLandscapeOffsetCenterX = 30.f;
-    _contentViewInPortraitOffsetCenterX  = 30.f;
+    _contentViewInPortraitOffsetCenterX  = 50.f;
     _contentViewScaleValue = 0.7f;
 }
 
