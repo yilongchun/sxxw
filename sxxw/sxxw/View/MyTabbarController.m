@@ -49,10 +49,13 @@
 //    
     ViewController1 *vc1 = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController1"];
     vc1.bclassid = 2;
+    vc1.detailTitle = @"中国三峡工程报";
     ViewController1 *vc2 = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController1"];
     vc2.bclassid = 3;
+    vc2.detailTitle = @"中国三峡杂志";
     ViewController1 *vc3 = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController1"];
     vc3.bclassid = 4;
+    vc3.detailTitle = @"清洁能源论坛";
     
     UITabBarItem *item1 = [[UITabBarItem alloc] initWithTitle:@"中国三峡工程报" image:[UIImage imageNamed:@"01"] tag:1];
     UITabBarItem *item2 = [[UITabBarItem alloc] initWithTitle:@"中国三峡杂志" image:[UIImage imageNamed:@"02"] tag:2];

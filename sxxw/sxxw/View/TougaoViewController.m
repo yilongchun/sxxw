@@ -24,8 +24,8 @@
     self.title = @"投稿反馈";
     
     
-//    QCheckBox *_check1 = [[QCheckBox alloc] initWithDelegate:self normal:[UIImage imageNamed:@"check_icon"] selected:[UIImage imageNamed:@"uncheck_icon"]];
-    QCheckBox *_check1 = [[QCheckBox alloc] initWithDelegate:self];
+    QCheckBox *_check1 = [[QCheckBox alloc] initWithDelegate:self normal:[UIImage imageNamed:@"radio_checked"] selected:[UIImage imageNamed:@"radio_unchecked"]];
+//    QCheckBox *_check1 = [[QCheckBox alloc] initWithDelegate:self];
     _check1.tag = 1;
     _check1.frame = CGRectMake(60, 5, 100, 30);
     [_check1 setTitle:@"信息交流" forState:UIControlStateNormal];
@@ -34,8 +34,8 @@
     [_check1 addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
     [self.lanmu addSubview:_check1];
     
-//    QCheckBox *_check2 = [[QCheckBox alloc] initWithDelegate:self normal:[UIImage imageNamed:@"check_icon"] selected:[UIImage imageNamed:@"uncheck_icon"]];
-    QCheckBox *_check2 = [[QCheckBox alloc] initWithDelegate:self];
+    QCheckBox *_check2 = [[QCheckBox alloc] initWithDelegate:self normal:[UIImage imageNamed:@"radio_checked"] selected:[UIImage imageNamed:@"radio_unchecked"]];
+//    QCheckBox *_check2 = [[QCheckBox alloc] initWithDelegate:self];
     _check2.tag = 2;
     _check2.frame = CGRectMake(170, 5, 100, 30);
     [_check2 setTitle:@"观点碰撞" forState:UIControlStateNormal];
@@ -44,8 +44,8 @@
     [_check2 addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
     [self.lanmu addSubview:_check2];
     
-//    QCheckBox *_check3 = [[QCheckBox alloc] initWithDelegate:self normal:[UIImage imageNamed:@"check_icon"] selected:[UIImage imageNamed:@"uncheck_icon"]];
-    QCheckBox *_check3 = [[QCheckBox alloc] initWithDelegate:self];
+    QCheckBox *_check3 = [[QCheckBox alloc] initWithDelegate:self normal:[UIImage imageNamed:@"radio_checked"] selected:[UIImage imageNamed:@"radio_unchecked"]];
+//    QCheckBox *_check3 = [[QCheckBox alloc] initWithDelegate:self];
     _check3.tag = 3;
     _check3.frame = CGRectMake(60, 45, 100, 30);
     [_check3 setTitle:@"热点推荐" forState:UIControlStateNormal];
@@ -84,6 +84,11 @@
     [self.tougaouser.layer setMasksToBounds:YES];
     [self.tougaouser.layer setBorderWidth:0.6f];
     [self.tougaouser.layer setBorderColor:[UIColor lightGrayColor].CGColor];
+    
+    [self.content.layer setMasksToBounds:YES];
+    [self.content.layer setBorderWidth:0.6f];
+    [self.content.layer setBorderColor:[UIColor lightGrayColor].CGColor];
+    
 }
 
 -(void)click:(QCheckBox *)button{
@@ -118,14 +123,20 @@
 */
 
 - (IBAction)takePicture:(id)sender {
+    NSLog(@"takePicture");
     [[IQKeyboardManager sharedManager] resignFirstResponder];
+    
 }
 
 - (IBAction)choosePicture:(id)sender {
+    NSLog(@"choosePicture");
     [[IQKeyboardManager sharedManager] resignFirstResponder];
+    
 }
 
 - (IBAction)save:(id)sender {
+    NSLog(@"save");
     [[IQKeyboardManager sharedManager] resignFirstResponder];
+    
 }
 @end

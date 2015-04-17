@@ -12,6 +12,7 @@
 #import "NewsTableViewCell.h"
 #import "NewsDetailViewController.h"
 #import "BMAdScrollView.h"
+#import "NSString+HXAddtions.h"
 
 @interface ViewController1 () <XHScrollMenuDelegate, UIScrollViewDelegate,ValueClickDelegate>
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -48,7 +49,7 @@
     toppicnewsArray = [NSMutableArray array];
     tableArray = [NSMutableArray array];
     
-    self.buttonBackground.backgroundColor = BACKGROUND_COLOR;
+    
     self.view.backgroundColor = BACKGROUND_COLOR;
     
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
@@ -408,7 +409,7 @@
             NSString *titlepic = [info objectForKey:@"titlepic"];
             //        cell.newsimageurl = [NSString stringWithFormat:@"%@%@",API_HOST,titlepic];
             cell.newstitle.text = title;
-            cell.newscontent.text = smalltext;
+            cell.newscontent.text = [NSString replaceHtmlTag:smalltext];
             cell.newsreplynum.text = [NSString stringWithFormat:@"%d",[plnum intValue]];
             [cell.newsimage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",API_HOST,titlepic]] placeholderImage:[UIImage imageNamed:@"defalut_pic"]];
         }
@@ -425,7 +426,7 @@
     XHMenu *menu =  [self.menus objectAtIndex:self.scrollMenu.selectedIndex];
     NewsDetailViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"NewsDetailViewController"];
     vc.url = [NSString stringWithFormat:@"%@%@?dealType=%@&classid=%@&newid=%@",API_HOST,API_GET_NEWS_INFO,@"select",menu.menuid,newsid];
-    vc.title = menu.title;
+    vc.title = self.detailTitle;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -445,7 +446,7 @@
     XHMenu *menu =  [self.menus objectAtIndex:self.scrollMenu.selectedIndex];
     NewsDetailViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"NewsDetailViewController"];
     vc.url = [NSString stringWithFormat:@"%@%@?dealType=%@&classid=%@&newid=%@",API_HOST,API_GET_NEWS_INFO,@"select",menu.menuid,newsid];
-    vc.title = menu.title;
+    vc.title = self.detailTitle;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

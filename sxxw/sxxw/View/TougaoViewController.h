@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIView *lanmu;
 @property (weak, nonatomic) IBOutlet UITextField *titleText;
 @property (weak, nonatomic) IBOutlet UITextField *tougaouser;
+@property (weak, nonatomic) IBOutlet UITextView *content;
 
 - (IBAction)takePicture:(id)sender;
 - (IBAction)choosePicture:(id)sender;

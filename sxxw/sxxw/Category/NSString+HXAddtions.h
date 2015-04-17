@@ -18,4 +18,6 @@
 
 +(NSString *) jsonStringWithObject:(id) object;
 
++(NSString *) replaceHtmlTag:(NSString *) string;
+
 @end

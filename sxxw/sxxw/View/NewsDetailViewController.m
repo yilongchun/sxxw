@@ -7,6 +7,7 @@
 //
 
 #import "NewsDetailViewController.h"
+#import "PinglunViewController.h"
 
 @interface NewsDetailViewController ()
 
@@ -19,6 +20,18 @@
     // Do any additional setup after loading the view.
     
     [self.mywebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
+    
+    
+    [self.pinglunview.layer setMasksToBounds:YES];
+    [self.pinglunview.layer setBorderWidth:0.6f];
+    [self.pinglunview.layer setBorderColor:[UIColor colorWithRed:203/255.0 green:204/255.0 blue:199/255.0 alpha:0.8f].CGColor];
+    
+    
+    UIImage *img = [[UIImage imageNamed:@"toolbar_light_comment"] stretchableImageWithLeftCapWidth:60 topCapHeight:0];
+    [self.pinglunBtn setBackgroundImage:img forState:UIControlStateNormal];
+    UIImage *img2 = [[UIImage imageNamed:@"toolbar_light_comment_highlighted"] stretchableImageWithLeftCapWidth:60 topCapHeight:0];
+    [self.pinglunBtn setBackgroundImage:img2 forState:UIControlStateHighlighted];
+    
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView{
@@ -52,4 +65,11 @@
 }
 */
 
+- (IBAction)pinglun:(id)sender {
+    PinglunViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"PinglunViewController"];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (IBAction)shoucang:(id)sender {
+}
 @end

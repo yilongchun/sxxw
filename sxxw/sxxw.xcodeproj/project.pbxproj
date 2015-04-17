@@ -67,6 +67,7 @@
 		E4EA89291AD435350065F271 /* XHMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EA891F1AD435350065F271 /* XHMenu.m */; };
 		E4EA892A1AD435350065F271 /* XHMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EA89211AD435350065F271 /* XHMenuButton.m */; };
 		E4EA892B1AD435350065F271 /* XHScrollMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EA89231AD435350065F271 /* XHScrollMenu.m */; };
+		E4EDB3CA1AE11C0200501687 /* PinglunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EDB3C91AE11C0200501687 /* PinglunViewController.m */; };
 		E4EF38BB1ADBD7440014DC7E /* BMAdScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EF38BA1ADBD7440014DC7E /* BMAdScrollView.m */; };
 		E4FFCA561AD68E8900E05E80 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FFCA2D1AD68E8900E05E80 /* AFHTTPRequestOperation.m */; };
 		E4FFCA571AD68E8900E05E80 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FFCA2F1AD68E8900E05E80 /* AFHTTPRequestOperationManager.m */; };
@@ -211,6 +212,8 @@
 		E4EA89211AD435350065F271 /* XHMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHMenuButton.m; sourceTree = "<group>"; };
 		E4EA89221AD435350065F271 /* XHScrollMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHScrollMenu.h; sourceTree = "<group>"; };
 		E4EA89231AD435350065F271 /* XHScrollMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHScrollMenu.m; sourceTree = "<group>"; };
+		E4EDB3C81AE11C0200501687 /* PinglunViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PinglunViewController.h; path = View/PinglunViewController.h; sourceTree = "<group>"; };
+		E4EDB3C91AE11C0200501687 /* PinglunViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PinglunViewController.m; path = View/PinglunViewController.m; sourceTree = "<group>"; };
 		E4EF38B91ADBD7440014DC7E /* BMAdScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMAdScrollView.h; sourceTree = "<group>"; };
 		E4EF38BA1ADBD7440014DC7E /* BMAdScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMAdScrollView.m; sourceTree = "<group>"; };
 		E4FFCA2C1AD68E8900E05E80 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -511,6 +514,8 @@
 				E4FFCA6B1AD690FB00E05E80 /* NewsTableViewCell.xib */,
 				E40A6DF31AD6D71D0090AF75 /* NewsDetailViewController.h */,
 				E40A6DF41AD6D71D0090AF75 /* NewsDetailViewController.m */,
+				E4EDB3C81AE11C0200501687 /* PinglunViewController.h */,
+				E4EDB3C91AE11C0200501687 /* PinglunViewController.m */,
 				E4EA88D21AD3EAC60065F271 /* LoginViewController.h */,
 				E4EA88D31AD3EAC60065F271 /* LoginViewController.m */,
 				E48DA2B61ADFD9BE00C96D0A /* UserRegisterViewController.h */,
@@ -750,6 +755,7 @@
 				E48DA2AA1ADFBDF300C96D0A /* RECommonFunctions.m in Sources */,
 				E4FFCA661AD68E8900E05E80 /* UIWebView+AFNetworking.m in Sources */,
 				E4FFCA6C1AD690FB00E05E80 /* NewsTableViewCell.m in Sources */,
+				E4EDB3CA1AE11C0200501687 /* PinglunViewController.m in Sources */,
 				E4FFCA581AD68E8900E05E80 /* AFHTTPSessionManager.m in Sources */,
 				E40A6DF01AD69D480090AF75 /* UIScrollView+PullLoad.m in Sources */,
 				E48DA3141AE01A8600C96D0A /* IQKeyboardManager.m in Sources */,

@@ -67,4 +67,14 @@
     return value;
 }
 
++(NSString *) replaceHtmlTag:(NSString *) string{
+//    NSMutableString *value = [NSMutableString stringWithString:string];
+    NSString *value = [string stringByReplacingOccurrencesOfString:@"&ldquo;" withString:@"“"];
+    value = [value stringByReplacingOccurrencesOfString:@"&rdquo;" withString:@"”"];
+    value = [value stringByReplacingOccurrencesOfString:@"&mdash;" withString:@"—"];
+    value = [value stringByReplacingOccurrencesOfString:@"&amp;lsquo;" withString:@"‘"];
+    value = [value stringByReplacingOccurrencesOfString:@"&amp;rsquo;" withString:@"’"];
+    return value;
+}
+
 @end

@@ -13,6 +13,6 @@
 @interface ViewController1 : UIViewController<UITableViewDataSource,UITableViewDelegate,PullDelegate>
 
 @property int bclassid;
-@property (weak, nonatomic) IBOutlet UIView *buttonBackground;
+@property (nonatomic, strong) NSString *detailTitle;
 
 @end

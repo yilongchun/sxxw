@@ -109,7 +109,7 @@
     }
     else if (indexPath.row == 3) {
         GuanyuViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"GuanyuViewController"];
-        vc.url = @"http://www.baidu.com";
+        vc.url = @"http://www.weyida.cn/cm/e/add/ecmsinfo_app.php?dealType=select&newid=1902&classid=8";
         UINavigationController *nc = (UINavigationController *)self.sideMenuViewController.contentViewController;
         [nc popToRootViewControllerAnimated:NO];
         [nc pushViewController:vc animated:YES];

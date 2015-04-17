@@ -10,7 +10,11 @@
 
 @interface NewsDetailViewController : UIViewController<UIWebViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIView *pinglunview;
 @property (weak, nonatomic) IBOutlet UIWebView *mywebview;
 @property (nonatomic, strong) NSString *url;
+@property (weak, nonatomic) IBOutlet UIButton *pinglunBtn;
+- (IBAction)pinglun:(id)sender;
+- (IBAction)shoucang:(id)sender;
 
 @end

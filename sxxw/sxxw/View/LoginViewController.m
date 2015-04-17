@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "IQKeyboardManager.h"
+#import "UserRegisterViewController.h"
 
 @interface LoginViewController ()
 
@@ -42,7 +43,6 @@
     label2.backgroundColor = [UIColor clearColor];
     self.password.leftViewMode = UITextFieldViewModeAlways;
     self.password.leftView = label2;
-    self.password.layer.borderColor = [UIColor grayColor].CGColor;
     self.password.borderStyle=UITextBorderStyleNone;
     [self.password.layer setMasksToBounds:YES];
     [self.password.layer setBorderWidth:0.6f];
@@ -77,6 +77,11 @@
 
 - (IBAction)reg:(id)sender {
     [[IQKeyboardManager sharedManager] resignFirstResponder];
+    
+    UINavigationController *nc = (UINavigationController *)self.sideMenuViewController.contentViewController;
+    UserRegisterViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"UserRegisterViewController"];
+    [nc popToRootViewControllerAnimated:NO];
+    [nc pushViewController:vc animated:YES];
 }
 
 
