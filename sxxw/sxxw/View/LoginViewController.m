@@ -94,6 +94,10 @@
         [self hideHud];
         if ([result isEqualToString:@"1"]) {
             [self showHint:@"登录成功"];
+            [self performSelector:@selector(back) withObject:nil afterDelay:1.5];
+            NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
+            [userdefault setValue:self.username.text forKey:@"username"];
+            [userdefault setValue:self.password.text forKey:@"password"];
         }else{
             NSData  * data = [result dataUsingEncoding:NSUTF8StringEncoding];
             TFHpple * doc       = [[TFHpple alloc] initWithHTMLData:data];
@@ -122,5 +126,8 @@
     [nc pushViewController:vc animated:YES];
 }
 
+-(void)back{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 @end

@@ -427,6 +427,7 @@
     NewsDetailViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"NewsDetailViewController"];
     vc.url = [NSString stringWithFormat:@"%@%@?dealType=%@&classid=%@&newid=%@",API_HOST,API_GET_NEWS_INFO,@"select",menu.menuid,newsid];
     vc.title = self.detailTitle;
+    vc.newsid = newsid;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -447,6 +448,7 @@
     NewsDetailViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"NewsDetailViewController"];
     vc.url = [NSString stringWithFormat:@"%@%@?dealType=%@&classid=%@&newid=%@",API_HOST,API_GET_NEWS_INFO,@"select",menu.menuid,newsid];
     vc.title = self.detailTitle;
+    vc.newsid = newsid;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

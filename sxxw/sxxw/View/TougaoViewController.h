@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TougaoViewController : UIViewController
+@interface TougaoViewController : UIViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *lanmuLabel;
 @property (weak, nonatomic) IBOutlet UIView *lanmu;

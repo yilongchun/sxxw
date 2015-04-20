@@ -20,7 +20,7 @@
 //背景颜色
 #define BACKGROUND_COLOR [UIColor colorWithRed:241/255.0 green:241/255.0 blue:241/255.0 alpha:1]
 
-
+#define CURRENT_VERSION [[[UIDevice currentDevice]systemVersion] floatValue]
 
 #define API_HOST @"http://www.weyida.cn"
 #define API_GET_CLASS_LIST @"/cm/e/add/ecmsclass_app.php"
@@ -28,6 +28,8 @@
 #define API_GET_NEWS_INFO @"/cm/e/add/ecmsinfo_app.php"
 #define API_TO_LOGIN_URL @"/cm/e/member/doaction_app.php"
 #define API_TO_REGISTER_URL @"/cm/e/member/doaction_app.php"
+#define API_TO_OWNERNEWS_URL @"/e/DoInfo/ecms_app.php"
+#define API_TO_COMMENT_URL @"/e/pl/doaction_app.php"
 
 
 

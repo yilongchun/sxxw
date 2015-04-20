@@ -8,6 +8,7 @@
 
 #import "NewsDetailViewController.h"
 #import "PinglunViewController.h"
+#import "LoginViewController.h"
 
 @interface NewsDetailViewController ()
 
@@ -66,8 +67,39 @@
 */
 
 - (IBAction)pinglun:(id)sender {
-    PinglunViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"PinglunViewController"];
-    [self.navigationController pushViewController:vc animated:YES];
+    NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
+    NSString *username = [userdefault objectForKey:@"username"];
+    NSString *password = [userdefault objectForKey:@"password"];
+    if (username != nil && password != nil) {
+        PinglunViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"PinglunViewController"];
+        vc.newsid = self.newsid;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else{
+        if (CURRENT_VERSION >= 8.0) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"您未登录" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+            [alert addAction:[UIAlertAction actionWithTitle:@"立即登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                UINavigationController *nc = (UINavigationController *)self.sideMenuViewController.contentViewController;
+                LoginViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+                [nc pushViewController:vc animated:YES];
+            }]];
+            [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+            [self presentViewController:alert animated:YES completion:nil];
+        }else{
+            UIActionSheet *alert = [[UIActionSheet alloc] initWithTitle:@"您未登录" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"立即登录" otherButtonTitles: nil];
+            alert.tag = 1;
+            [alert showInView:self.view];
+        }
+    }
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (actionSheet.tag == 1) {
+        if (buttonIndex == 0) {
+            UINavigationController *nc = (UINavigationController *)self.sideMenuViewController.contentViewController;
+            LoginViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+            [nc pushViewController:vc animated:YES];
+        }
+    }
 }
 
 - (IBAction)shoucang:(id)sender {

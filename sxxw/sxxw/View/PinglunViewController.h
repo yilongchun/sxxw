@@ -12,5 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *username;
 @property (weak, nonatomic) IBOutlet UITextView *content;
+- (IBAction)save:(id)sender;
+@property (nonatomic, strong) NSString *newsid;
 
 @end

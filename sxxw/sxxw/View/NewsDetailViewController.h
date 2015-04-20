@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewsDetailViewController : UIViewController<UIWebViewDelegate>
+@interface NewsDetailViewController : UIViewController<UIWebViewDelegate,UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *pinglunview;
 @property (weak, nonatomic) IBOutlet UIWebView *mywebview;
 @property (nonatomic, strong) NSString *url;
+@property (nonatomic, strong) NSString *newsid;
 @property (weak, nonatomic) IBOutlet UIButton *pinglunBtn;
 - (IBAction)pinglun:(id)sender;
 - (IBAction)shoucang:(id)sender;

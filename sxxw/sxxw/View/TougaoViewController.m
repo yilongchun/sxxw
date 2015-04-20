@@ -9,6 +9,7 @@
 #import "TougaoViewController.h"
 #import "IQKeyboardManager.h"
 #import "QCheckBox.h"
+#import "TFHpple.h"
 
 @interface TougaoViewController ()<QCheckBoxDelegate>
 
@@ -126,17 +127,110 @@
     NSLog(@"takePicture");
     [[IQKeyboardManager sharedManager] resignFirstResponder];
     
+    //检查相机模式是否可用
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        NSLog(@"sorry, no camera or camera is unavailable.");
+        return;
+    }
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.delegate = self;
+    imagePicker.allowsEditing = YES;
+    imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    imagePicker.mediaTypes =  [[NSArray alloc] initWithObjects:@"public.image", nil];
+    //            imagePicker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:imagePicker.sourceType];
+    [self presentViewController:imagePicker animated:YES completion:nil];
+    
 }
 
 - (IBAction)choosePicture:(id)sender {
     NSLog(@"choosePicture");
     [[IQKeyboardManager sharedManager] resignFirstResponder];
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.delegate = self;
+    imagePicker.allowsEditing = YES;
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    imagePicker.mediaTypes =  [[NSArray alloc] initWithObjects:@"public.image", nil];
+    [self presentViewController:imagePicker animated:YES completion:nil];
+}
+
+#pragma mark - UIImagePickerController Delegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    if ([[info objectForKey:UIImagePickerControllerMediaType] isEqualToString:@"public.image"]) {
+        UIImage  *image = [info objectForKey:UIImagePickerControllerEditedImage];
+//        UIImageView *imageview = [[UIImageView alloc] initWithImage:image];
+//        imageview.userInteractionEnabled = YES;
+//        //                [imageview setContentMode:UIViewContentModeScaleAspectFit];
+//        imageview.frame = workingFrame;
+//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageClick:)];
+//        [imageview addGestureRecognizer:tap];
+//        UILongPressGestureRecognizer *longpress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(imageLongPress:)];
+//        [imageview addGestureRecognizer:longpress];
+//        [self.view addSubview:imageview];
+//        workingFrame.origin.x = workingFrame.origin.x + workingFrame.size.width + 5;
+//        self.leftLayout.constant = workingFrame.origin.x;
+//        imageview.tag = self.chosenImages.count+1;
+//        [self.chosenImages addObject:imageview];
+//        
+//        if (self.chosenImages.count >= 4) {
+//            [self.choseBtn setHidden:YES];
+//        }else{
+//            [self.choseBtn setHidden:NO];
+//        }
+    }
     
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)save:(id)sender {
     NSLog(@"save");
     [[IQKeyboardManager sharedManager] resignFirstResponder];
+    
+    
+    [self showHudInView:self.view hint:@"加载中"];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    [parameters setValue:@"" forKey:@"filepass"];
+    [parameters setValue:@"" forKey:@"classid"];
+    [parameters setValue:@"" forKey:@"newstext"];
+    [parameters setValue:@"" forKey:@"mid"];
+    [parameters setValue:@"" forKey:@"title"];
+    [parameters setValue:@"" forKey:@"ftitle"];
+    [parameters setValue:@"" forKey:@"keyboard"];
+    [parameters setValue:@"" forKey:@"smalltext"];
+    [parameters setValue:@"" forKey:@"writer"];
+    [parameters setValue:@"" forKey:@"befrom"];
+    
+    NSString *str = [NSString stringWithFormat:@"%@%@",API_HOST,API_TO_OWNERNEWS_URL];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    //    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
+    [manager GET:str parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSString *result = [NSString stringWithFormat:@"%@",[operation responseString]];
+        NSLog(@"%@",result);
+        [self hideHud];
+        if ([result isEqualToString:@"1"]) {
+            [self showHint:@"投稿成功"];
+        }else{
+            NSData  * data = [result dataUsingEncoding:NSUTF8StringEncoding];
+            TFHpple * doc       = [[TFHpple alloc] initWithHTMLData:data];
+            NSArray * elements  = [doc searchWithXPathQuery:@"//table[@class='tableborder']"];
+            TFHppleElement * element = [elements objectAtIndex:0];
+            NSArray *trs = [element childrenWithTagName:@"tr"];
+            TFHppleElement * tr = [trs objectAtIndex:1];
+            TFHppleElement * td = [tr firstChildWithTagName:@"td"];
+            TFHppleElement * div = [td firstChildWithTagName:@"div"];
+            TFHppleElement * b = [div firstChildWithTagName:@"b"];
+            [self showHint:[b text]];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"发生错误！%@",error);
+        [self hideHud];
+        [self showHint:@"连接失败"];
+    }];
     
 }
 @end
