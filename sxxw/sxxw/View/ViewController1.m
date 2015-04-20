@@ -423,11 +423,15 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSDictionary *info = [[dataSourceArray objectAtIndex:self.scrollMenu.selectedIndex] objectAtIndex:indexPath.row + 2];
     NSString *newsid = [info objectForKey:@"id"];
+    NSString *title = [info objectForKey:@"title"];
+    NSString *titlepic = [info objectForKey:@"titlepic"];
     XHMenu *menu =  [self.menus objectAtIndex:self.scrollMenu.selectedIndex];
     NewsDetailViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"NewsDetailViewController"];
     vc.url = [NSString stringWithFormat:@"%@%@?dealType=%@&classid=%@&newid=%@",API_HOST,API_GET_NEWS_INFO,@"select",menu.menuid,newsid];
     vc.title = self.detailTitle;
     vc.newsid = newsid;
+    vc.shareText = title;
+    vc.shareImage = [NSString stringWithFormat:@"%@%@",API_HOST,titlepic];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -444,11 +448,16 @@
 {
     NewsTableViewCell *cell = [[toppicnewsArray objectAtIndex:self.scrollMenu.selectedIndex] objectAtIndex:vid - 1];
     NSString *newsid = cell.newsid;
+    NSDictionary *info = [[dataSourceArray objectAtIndex:self.scrollMenu.selectedIndex] objectAtIndex:vid - 1];
+    NSString *title = [info objectForKey:@"title"];
+    NSString *titlepic = [info objectForKey:@"titlepic"];
     XHMenu *menu =  [self.menus objectAtIndex:self.scrollMenu.selectedIndex];
     NewsDetailViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"NewsDetailViewController"];
     vc.url = [NSString stringWithFormat:@"%@%@?dealType=%@&classid=%@&newid=%@",API_HOST,API_GET_NEWS_INFO,@"select",menu.menuid,newsid];
     vc.title = self.detailTitle;
     vc.newsid = newsid;
+    vc.shareText = title;
+    vc.shareImage = [NSString stringWithFormat:@"%@%@",API_HOST,titlepic];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

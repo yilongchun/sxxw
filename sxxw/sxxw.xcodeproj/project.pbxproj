@@ -67,6 +67,7 @@
 		E4EA89291AD435350065F271 /* XHMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EA891F1AD435350065F271 /* XHMenu.m */; };
 		E4EA892A1AD435350065F271 /* XHMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EA89211AD435350065F271 /* XHMenuButton.m */; };
 		E4EA892B1AD435350065F271 /* XHScrollMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EA89231AD435350065F271 /* XHScrollMenu.m */; };
+		E4EC61A51AE521D800D8C4CC /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4EC61A41AE521D800D8C4CC /* Social.framework */; };
 		E4EDB3CA1AE11C0200501687 /* PinglunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EDB3C91AE11C0200501687 /* PinglunViewController.m */; };
 		E4EDB3CC1AE176D300501687 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E4EDB3CB1AE176D300501687 /* libxml2.2.dylib */; };
 		E4EDB3D41AE1771400501687 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EDB3CF1AE1771400501687 /* TFHpple.m */; };
@@ -216,6 +217,7 @@
 		E4EA89211AD435350065F271 /* XHMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHMenuButton.m; sourceTree = "<group>"; };
 		E4EA89221AD435350065F271 /* XHScrollMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHScrollMenu.h; sourceTree = "<group>"; };
 		E4EA89231AD435350065F271 /* XHScrollMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHScrollMenu.m; sourceTree = "<group>"; };
+		E4EC61A41AE521D800D8C4CC /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		E4EDB3C81AE11C0200501687 /* PinglunViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PinglunViewController.h; path = View/PinglunViewController.h; sourceTree = "<group>"; };
 		E4EDB3C91AE11C0200501687 /* PinglunViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PinglunViewController.m; path = View/PinglunViewController.m; sourceTree = "<group>"; };
 		E4EDB3CB1AE176D300501687 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
@@ -277,6 +279,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4EC61A51AE521D800D8C4CC /* Social.framework in Frameworks */,
 				E4EDB3CC1AE176D300501687 /* libxml2.2.dylib in Frameworks */,
 				E4EA88BC1AD3DBAF0065F271 /* UIKit.framework in Frameworks */,
 				E4EA88BA1AD3DBA30065F271 /* Foundation.framework in Frameworks */,
@@ -509,6 +512,7 @@
 		E4EA88B81AD3DB850065F271 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E4EC61A41AE521D800D8C4CC /* Social.framework */,
 				E4EDB3CB1AE176D300501687 /* libxml2.2.dylib */,
 				E4EA88BB1AD3DBAF0065F271 /* UIKit.framework */,
 				E4EA88B91AD3DBA30065F271 /* Foundation.framework */,

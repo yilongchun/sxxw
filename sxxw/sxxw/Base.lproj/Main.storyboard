@@ -90,7 +90,7 @@
                                         </state>
                                         <state key="highlighted" image="night_top_navigation_shareicon_highlighted"/>
                                         <connections>
-                                            <action selector="shoucang:" destination="7Oa-wG-1fa" eventType="touchUpInside" id="BHf-sZ-hia"/>
+                                            <action selector="share:" destination="7Oa-wG-1fa" eventType="touchUpInside" id="4mO-1Z-6aX"/>
                                         </connections>
                                     </button>
                                 </subviews>

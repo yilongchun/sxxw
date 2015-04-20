@@ -102,6 +102,13 @@
     }
 }
 
-- (IBAction)shoucang:(id)sender {
+- (IBAction)share:(id)sender {
+    NSString *textToShare = self.shareText;
+    UIImage *imageToShare = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.shareImage]]];
+    NSURL *urlToShare = [NSURL URLWithString:self.url];
+    NSArray *activityItems = @[textToShare, imageToShare, urlToShare];
+    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems  applicationActivities:nil];
+    [self presentViewController:activityController  animated:YES completion:nil];
 }
+
 @end
