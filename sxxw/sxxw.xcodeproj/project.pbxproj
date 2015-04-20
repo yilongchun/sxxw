@@ -68,6 +68,10 @@
 		E4EA892A1AD435350065F271 /* XHMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EA89211AD435350065F271 /* XHMenuButton.m */; };
 		E4EA892B1AD435350065F271 /* XHScrollMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EA89231AD435350065F271 /* XHScrollMenu.m */; };
 		E4EDB3CA1AE11C0200501687 /* PinglunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EDB3C91AE11C0200501687 /* PinglunViewController.m */; };
+		E4EDB3CC1AE176D300501687 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E4EDB3CB1AE176D300501687 /* libxml2.2.dylib */; };
+		E4EDB3D41AE1771400501687 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EDB3CF1AE1771400501687 /* TFHpple.m */; };
+		E4EDB3D51AE1771400501687 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EDB3D11AE1771400501687 /* TFHppleElement.m */; };
+		E4EDB3D61AE1771400501687 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EDB3D31AE1771400501687 /* XPathQuery.m */; };
 		E4EF38BB1ADBD7440014DC7E /* BMAdScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EF38BA1ADBD7440014DC7E /* BMAdScrollView.m */; };
 		E4FFCA561AD68E8900E05E80 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FFCA2D1AD68E8900E05E80 /* AFHTTPRequestOperation.m */; };
 		E4FFCA571AD68E8900E05E80 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FFCA2F1AD68E8900E05E80 /* AFHTTPRequestOperationManager.m */; };
@@ -214,6 +218,13 @@
 		E4EA89231AD435350065F271 /* XHScrollMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHScrollMenu.m; sourceTree = "<group>"; };
 		E4EDB3C81AE11C0200501687 /* PinglunViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PinglunViewController.h; path = View/PinglunViewController.h; sourceTree = "<group>"; };
 		E4EDB3C91AE11C0200501687 /* PinglunViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PinglunViewController.m; path = View/PinglunViewController.m; sourceTree = "<group>"; };
+		E4EDB3CB1AE176D300501687 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		E4EDB3CE1AE1771400501687 /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
+		E4EDB3CF1AE1771400501687 /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
+		E4EDB3D01AE1771400501687 /* TFHppleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHppleElement.h; sourceTree = "<group>"; };
+		E4EDB3D11AE1771400501687 /* TFHppleElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHppleElement.m; sourceTree = "<group>"; };
+		E4EDB3D21AE1771400501687 /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
+		E4EDB3D31AE1771400501687 /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
 		E4EF38B91ADBD7440014DC7E /* BMAdScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMAdScrollView.h; sourceTree = "<group>"; };
 		E4EF38BA1ADBD7440014DC7E /* BMAdScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMAdScrollView.m; sourceTree = "<group>"; };
 		E4FFCA2C1AD68E8900E05E80 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -266,6 +277,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4EDB3CC1AE176D300501687 /* libxml2.2.dylib in Frameworks */,
 				E4EA88BC1AD3DBAF0065F271 /* UIKit.framework in Frameworks */,
 				E4EA88BA1AD3DBA30065F271 /* Foundation.framework in Frameworks */,
 			);
@@ -453,6 +465,7 @@
 				E4EA88D71AD3EDC60065F271 /* JYSlideSegmentController.h */,
 				E4EA88D81AD3EDC60065F271 /* JYSlideSegmentController.m */,
 				E4EA88C51AD3E6530065F271 /* View */,
+				E4EDB3CD1AE1771400501687 /* TFHpple */,
 				E48DA31D1AE023D600C96D0A /* QCheckbox */,
 				E48DA2F01AE01A8600C96D0A /* IQKeyBoardManager */,
 				E48DA2A31ADFBDF300C96D0A /* RESideMenu */,
@@ -496,6 +509,7 @@
 		E4EA88B81AD3DB850065F271 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E4EDB3CB1AE176D300501687 /* libxml2.2.dylib */,
 				E4EA88BB1AD3DBAF0065F271 /* UIKit.framework */,
 				E4EA88B91AD3DBA30065F271 /* Foundation.framework */,
 			);
@@ -554,6 +568,19 @@
 				E4EA89191AD435350065F271 /* rightShadow@2x.png */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		E4EDB3CD1AE1771400501687 /* TFHpple */ = {
+			isa = PBXGroup;
+			children = (
+				E4EDB3CE1AE1771400501687 /* TFHpple.h */,
+				E4EDB3CF1AE1771400501687 /* TFHpple.m */,
+				E4EDB3D01AE1771400501687 /* TFHppleElement.h */,
+				E4EDB3D11AE1771400501687 /* TFHppleElement.m */,
+				E4EDB3D21AE1771400501687 /* XPathQuery.h */,
+				E4EDB3D31AE1771400501687 /* XPathQuery.m */,
+			);
+			path = TFHpple;
 			sourceTree = "<group>";
 		};
 		E4EF38B81ADBD7440014DC7E /* BMAdScrollView */ = {
@@ -766,6 +793,7 @@
 				E4FFCA591AD68E8900E05E80 /* AFNetworkReachabilityManager.m in Sources */,
 				E40A6DEF1AD69D480090AF75 /* UIResponder+Router.m in Sources */,
 				E48DA3171AE01A8600C96D0A /* IQTextView.m in Sources */,
+				E4EDB3D41AE1771400501687 /* TFHpple.m in Sources */,
 				E40A6DF11AD69D480090AF75 /* UIViewController+DismissKeyboard.m in Sources */,
 				E40A6DF21AD69D480090AF75 /* UIViewController+HUD.m in Sources */,
 				E48DA3131AE01A8600C96D0A /* IQUIWindow+Hierarchy.m in Sources */,
@@ -794,7 +822,9 @@
 				E4EA88D91AD3EDC60065F271 /* JYSlideSegmentController.m in Sources */,
 				E4EA892B1AD435350065F271 /* XHScrollMenu.m in Sources */,
 				E4FFCA681AD68E8900E05E80 /* MBProgressHUD.m in Sources */,
+				E4EDB3D51AE1771400501687 /* TFHppleElement.m in Sources */,
 				E48DA2AB1ADFBDF300C96D0A /* RESideMenu.m in Sources */,
+				E4EDB3D61AE1771400501687 /* XPathQuery.m in Sources */,
 				E4EA892A1AD435350065F271 /* XHMenuButton.m in Sources */,
 				E4FFCA5C1AD68E8900E05E80 /* AFURLRequestSerialization.m in Sources */,
 				E48DA3161AE01A8600C96D0A /* IQSegmentedNextPrevious.m in Sources */,
@@ -929,6 +959,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = sxxw/sxxw.pch;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SDKROOT)/usr/include/libxml2",
+				);
 				INFOPLIST_FILE = sxxw/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -944,6 +979,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = sxxw/sxxw.pch;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SDKROOT)/usr/include/libxml2",
+				);
 				INFOPLIST_FILE = sxxw/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -26,8 +26,8 @@
 #define API_GET_CLASS_LIST @"/cm/e/add/ecmsclass_app.php"
 #define API_GET_NEWS_LIST @"/cm/e/add/ecmsinfo_app.php"
 #define API_GET_NEWS_INFO @"/cm/e/add/ecmsinfo_app.php"
-
-
+#define API_TO_LOGIN_URL @"/cm/e/member/doaction_app.php"
+#define API_TO_REGISTER_URL @"/cm/e/member/doaction_app.php"
 
 
 

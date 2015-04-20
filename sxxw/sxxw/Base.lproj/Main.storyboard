@@ -453,7 +453,7 @@
                                     <action selector="login:" destination="B2z-EV-LgW" eventType="touchUpInside" id="8mb-iP-ZK8"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="请再次输入密码" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Uxa-sz-QvZ">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="请再次输入密码" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Uxa-sz-QvZ">
                                 <rect key="frame" x="16" y="156" width="288" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="EoP-FW-IJI"/>

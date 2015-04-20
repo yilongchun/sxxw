@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "IQKeyboardManager.h"
 #import "UserRegisterViewController.h"
+#import "TFHpple.h"
 
 @interface LoginViewController ()
 
@@ -73,6 +74,43 @@
 
 - (IBAction)login:(id)sender {
     [[IQKeyboardManager sharedManager] resignFirstResponder];
+    
+    [self showHudInView:self.view hint:@"登录中"];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setValue:@"login" forKey:@"enews"];
+    [parameters setValue:self.username.text forKey:@"username"];
+    [parameters setValue:self.password.text forKey:@"password"];
+    
+    NSString *str = [NSString stringWithFormat:@"%@%@",API_HOST,API_TO_LOGIN_URL];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    //    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
+    [manager GET:str parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSString *result = [NSString stringWithFormat:@"%@",[operation responseString]];
+        NSLog(@"%@",result);
+        [self hideHud];
+        if ([result isEqualToString:@"1"]) {
+            [self showHint:@"登录成功"];
+        }else{
+            NSData  * data = [result dataUsingEncoding:NSUTF8StringEncoding];
+            TFHpple * doc       = [[TFHpple alloc] initWithHTMLData:data];
+            NSArray * elements  = [doc searchWithXPathQuery:@"//table[@class='tableborder']"];
+            TFHppleElement * element = [elements objectAtIndex:0];
+            NSArray *trs = [element childrenWithTagName:@"tr"];
+            TFHppleElement * tr = [trs objectAtIndex:1];
+            TFHppleElement * td = [tr firstChildWithTagName:@"td"];
+            TFHppleElement * div = [td firstChildWithTagName:@"div"];
+            TFHppleElement * b = [div firstChildWithTagName:@"b"];
+            [self showHint:[b text]];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"发生错误！%@",error);
+        [self hideHud];
+        [self showHint:@"连接失败"];
+    }];
 }
 
 - (IBAction)reg:(id)sender {
