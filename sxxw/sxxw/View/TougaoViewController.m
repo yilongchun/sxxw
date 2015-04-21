@@ -389,7 +389,7 @@
     NSMutableString *ownernews = [NSMutableString stringWithString:self.content.text];
     if(fileNamesArray.count > 0){
         for(int i=0;i<fileNamesArray.count;i++){
-            [ownernews appendFormat:@"</br></br><img src='http://www.weyida.cn/cm/e/uploadPic/%@' />", fileNamesArray[i]];
+            [ownernews appendFormat:@"</br></br><img src='%@/cm/e/uploadPic/%@' />",API_HOST, fileNamesArray[i]];
         }
     }
     NSMutableString *temp  = [NSMutableString string];
