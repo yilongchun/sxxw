@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIWebView *mywebview;
 @property (nonatomic, strong) NSString *url;
 @property (nonatomic, strong) NSString *newsid;
+@property (nonatomic, strong) NSString *classid;
 @property (nonatomic, strong) NSString *shareText;
 @property (nonatomic, strong) NSString *shareImage;
 @property (weak, nonatomic) IBOutlet UIButton *pinglunBtn;

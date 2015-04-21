@@ -37,6 +37,10 @@
     [self.content.layer setMasksToBounds:YES];
     [self.content.layer setBorderWidth:0.6f];
     [self.content.layer setBorderColor:[UIColor lightGrayColor].CGColor];
+    
+    NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
+    NSString *username = [userdefault objectForKey:@"username"];
+    self.username.text = username;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,12 +68,11 @@
     NSString *username = [userdefault objectForKey:@"username"];
     NSString *password = [userdefault objectForKey:@"password"];
 
-    
     [parameters setValue:@"AddPl" forKey:@"enews"];
     [parameters setValue:username forKey:@"username"];
     [parameters setValue:password forKey:@"password"];
     [parameters setValue:self.newsid forKey:@"id"];
-    [parameters setValue:@"login" forKey:@"classid"];
+    [parameters setValue:self.classid forKey:@"classid"];
     [parameters setValue:self.content.text forKey:@"saytext"];
     
     
@@ -80,12 +83,14 @@
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
-    [manager GET:str parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:str parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *result = [NSString stringWithFormat:@"%@",[operation responseString]];
         NSLog(@"%@",result);
         [self hideHud];
         if ([result isEqualToString:@"1"]) {
             [self showHint:@"评论成功"];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadNewsDetail" object:nil];
+            [self performSelector:@selector(back) withObject:nil afterDelay:1.5];
         }else{
             NSData  * data = [result dataUsingEncoding:NSUTF8StringEncoding];
             TFHpple * doc       = [[TFHpple alloc] initWithHTMLData:data];
@@ -103,5 +108,9 @@
         [self hideHud];
         [self showHint:@"连接失败"];
     }];
+}
+
+-(void)back{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 @end

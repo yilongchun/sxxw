@@ -20,6 +20,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(reload)
+                                                 name:@"reloadNewsDetail"
+                                               object:nil];
+    
     [self.mywebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
     
     
@@ -67,29 +72,30 @@
 */
 
 - (IBAction)pinglun:(id)sender {
-    NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
-    NSString *username = [userdefault objectForKey:@"username"];
-    NSString *password = [userdefault objectForKey:@"password"];
-    if (username != nil && password != nil) {
+//    NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
+//    NSString *username = [userdefault objectForKey:@"username"];
+//    NSString *password = [userdefault objectForKey:@"password"];
+//    if (username != nil && password != nil) {
         PinglunViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"PinglunViewController"];
         vc.newsid = self.newsid;
+        vc.classid = self.classid;
         [self.navigationController pushViewController:vc animated:YES];
-    }else{
-        if (CURRENT_VERSION >= 8.0) {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"您未登录" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-            [alert addAction:[UIAlertAction actionWithTitle:@"立即登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                UINavigationController *nc = (UINavigationController *)self.sideMenuViewController.contentViewController;
-                LoginViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-                [nc pushViewController:vc animated:YES];
-            }]];
-            [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
-            [self presentViewController:alert animated:YES completion:nil];
-        }else{
-            UIActionSheet *alert = [[UIActionSheet alloc] initWithTitle:@"您未登录" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"立即登录" otherButtonTitles: nil];
-            alert.tag = 1;
-            [alert showInView:self.view];
-        }
-    }
+//    }else{
+//        if (CURRENT_VERSION >= 8.0) {
+//            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"您未登录" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+//            [alert addAction:[UIAlertAction actionWithTitle:@"立即登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+//                UINavigationController *nc = (UINavigationController *)self.sideMenuViewController.contentViewController;
+//                LoginViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+//                [nc pushViewController:vc animated:YES];
+//            }]];
+//            [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+//            [self presentViewController:alert animated:YES completion:nil];
+//        }else{
+//            UIActionSheet *alert = [[UIActionSheet alloc] initWithTitle:@"您未登录" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"立即登录" otherButtonTitles: nil];
+//            alert.tag = 1;
+//            [alert showInView:self.view];
+//        }
+//    }
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -109,6 +115,10 @@
     NSArray *activityItems = @[textToShare, imageToShare, urlToShare];
     UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems  applicationActivities:nil];
     [self presentViewController:activityController  animated:YES completion:nil];
+}
+
+-(void)reload{
+    [self.mywebview reload];
 }
 
 @end

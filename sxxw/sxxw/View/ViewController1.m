@@ -29,6 +29,8 @@
     CGFloat startX;
     CGFloat endX;
     
+//    BMAdScrollView *adView;
+    
 }
 @synthesize bclassid;
 
@@ -83,15 +85,13 @@
     
     [self.view addSubview:self.scrollView];
     
-
+    
     [self loadClassList];
     
 }
 
 //加载第一级
 -(void)loadClassList{
-    
-    
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setValue:@"select" forKey:@"dealType"];
@@ -116,7 +116,7 @@
             for (int i = 0 ; i < array.count ; i++) {
                 NSDictionary *info = [array objectAtIndex:i];
                 NSString *classid = [info objectForKey:@"classid"];
-                NSLog(@"%@",classid);
+//                NSLog(@"%@",classid);
                 NSString *classname = [info objectForKey:@"classname"];
                     
             
@@ -148,15 +148,17 @@
                 [dataSourceArray addObject:dataSource];
                 NSMutableArray *dataSource2 = [NSMutableArray array];
                 [toppicnewsArray addObject:dataSource2];
+                
 //                [table reloadData];
             }
+            
             [_scrollView setContentSize:CGSizeMake(self.menus.count * CGRectGetWidth(_scrollView.bounds), CGRectGetHeight(_scrollView.bounds))];
             [self startObservingContentOffsetForScrollView:_scrollView];
             _scrollMenu.menus = self.menus;
             _scrollMenu.shouldUniformizeMenus = YES;
             [_scrollMenu reloadData];
         }
-        [self loadNewsList];
+        [self loadTopPicNewsList];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"发生错误！%@",error);
@@ -165,8 +167,81 @@
     }];
 }
 
+-(void)loadTopPicNewsList{
+    
+        [self showHudInView:self.view hint:@"加载中"];
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+        [parameters setValue:@"select" forKey:@"dealType"];
+        [parameters setValue:@"7" forKey:@"classid"];
+        NSString *str = [NSString stringWithFormat:@"%@%@",API_HOST,API_GET_NEWS_LIST];
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
+        [manager GET:str parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            
+            NSArray *dataSource = [NSArray array];
+            [dataSourceArray replaceObjectAtIndex:self.scrollMenu.selectedIndex withObject:dataSource];
+            
+//            NSLog(@"JSON: %@", operation.responseString);
+            //        NSArray *dataSource = [NSArray array];
+            //        [toppicnewsArray replaceObjectAtIndex:self.scrollMenu.selectedIndex withObject:dataSource];
+            NSString *result = [NSString stringWithFormat:@"[%@]",[operation responseString]];
+            NSError *error;
+            NSArray *array = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+            if (array == nil) {
+                NSLog(@"json parse failed \r\n");
+            }else{
+                NSMutableArray *arr = [NSMutableArray array];
+                for (int i = 0 ; i < 3; i++) {
+                    NSDictionary *info = [array objectAtIndex:i];
+                    NSString *title = [info objectForKey:@"title"];
+                    NSString *titlepic = [info objectForKey:@"titlepic"];
+                    NSString *newsid = [info objectForKey:@"id"];
+                    NewsTableViewCell *news = [[NewsTableViewCell alloc] init];
+                    news.newsid = newsid;
+                    news.title = title;
+                    news.titlepic = titlepic;
+                    news.newsimageurl = [NSString stringWithFormat:@"%@%@",API_HOST,titlepic];
+                    [arr addObject:news];
+                }
+                [toppicnewsArray replaceObjectAtIndex:self.scrollMenu.selectedIndex withObject:arr];
+                NSMutableArray *arr2=[NSMutableArray array];
+                NSMutableArray *strArr = [NSMutableArray array];
+                //            NSMutableArray *toppicnews = [toppicnewsArray objectAtIndex:self.scrollMenu.selectedIndex];
+                for (NewsTableViewCell *news in arr) {
+                    NSString *temptitle  = news.title;
+                    NSString *temptitleimg  = news.newsimageurl;
+                    [arr2 addObject:temptitleimg];
+                    [strArr addObject:temptitle];
+                }
+                if (arr2 != nil && arr2.count > 0) {
+                    BMAdScrollView *adView = [[BMAdScrollView alloc] initWithNameArr:arr2  titleArr:strArr height:190.0f offsetY:0];
+                    adView.vDelegate = self;
+                    adView.pageCenter = CGPointMake([UIScreen mainScreen].bounds.size.width - 25, adView.frame.size.height-15);
+                    adView.backgroundColor = [UIColor whiteColor];
+                    
+                    NSMutableArray *ad = [NSMutableArray arrayWithObject:adView];
+                    [dataSourceArray replaceObjectAtIndex:self.scrollMenu.selectedIndex withObject:ad];
+                    
+                }
+//                toppicnewsArray = [NSMutableArray array];
+//                for (int i = 0; i < dataSourceArray.count; i++) {
+//                    [toppicnewsArray addObject:adView];
+//                }
+            }
+                    [self loadNewsList];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"发生错误！%@",error);
+            [self hideHud];
+            [self showHint:@"连接失败"];
+            UITableView *table = [tableArray objectAtIndex:self.scrollMenu.selectedIndex];
+            [table stopLoadWithState:PullDownLoadState];
+        }];
+    
+}
+
 -(void)loadNewsList{
-    [self showHudInView:self.view hint:@"加载中"];
     
     XHMenu *menu = [self.menus objectAtIndex:self.scrollMenu.selectedIndex];
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
@@ -178,10 +253,8 @@
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
     [manager GET:str parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", operation.responseString);
-        NSArray *dataSource = [NSArray array];
-        [dataSourceArray replaceObjectAtIndex:self.scrollMenu.selectedIndex withObject:dataSource];
-        [toppicnewsArray replaceObjectAtIndex:self.scrollMenu.selectedIndex withObject:dataSource];
+//        NSLog(@"JSON: %@", operation.responseString);
+        
         
         NSString *result = [NSString stringWithFormat:@"[%@]",[operation responseString]];
         NSError *error;
@@ -189,20 +262,9 @@
         if (array == nil) {
             NSLog(@"json parse failed \r\n");
         }else{
-            NSMutableArray *arr = [NSMutableArray array];
-            for (int i = 0 ; i < 3; i++) {
-                NSDictionary *info = [array objectAtIndex:i];
-                NSString *title = [info objectForKey:@"title"];
-                NSString *titlepic = [info objectForKey:@"titlepic"];
-                NSString *newsid = [info objectForKey:@"id"];
-                NewsTableViewCell *news = [[NewsTableViewCell alloc] init];
-                news.newsid = newsid;
-                news.title = title;
-                news.newsimageurl = [NSString stringWithFormat:@"%@%@",API_HOST,titlepic];
-                [arr addObject:news];
-            }
-            [toppicnewsArray replaceObjectAtIndex:self.scrollMenu.selectedIndex withObject:arr];
-            [dataSourceArray replaceObjectAtIndex:self.scrollMenu.selectedIndex withObject:array];
+            NSMutableArray *ar = [dataSourceArray objectAtIndex:self.scrollMenu.selectedIndex];
+            [ar addObjectsFromArray:array];
+            [dataSourceArray replaceObjectAtIndex:self.scrollMenu.selectedIndex withObject:ar];
             UITableView *table = [tableArray objectAtIndex:self.scrollMenu.selectedIndex];
             [table reloadData];
             [table stopLoadWithState:PullDownLoadState];
@@ -241,11 +303,11 @@
 
 - (void)scrollMenuDidSelected:(XHScrollMenu *)scrollMenu menuIndex:(NSUInteger)selectIndex {
     
-    NSLog(@"selectIndex : %lu", (unsigned long)selectIndex);
+//    NSLog(@"selectIndex : %lu", (unsigned long)selectIndex);
     self.shouldObserving = NO;
     [self menuSelectedIndex:selectIndex];
     if ([[dataSourceArray objectAtIndex:self.scrollMenu.selectedIndex] count] == 0) {
-        [self loadNewsList];
+        [self loadTopPicNewsList];
     }
 //    UITableView *table = [tableArray objectAtIndex:selectIndex];
 //    [table reloadData];
@@ -283,7 +345,7 @@
             [self.scrollMenu setSelectedIndex:currentPage animated:YES calledDelegate:NO];
             
             if ([[dataSourceArray objectAtIndex:self.scrollMenu.selectedIndex] count] == 0) {
-                [self loadNewsList];
+                [self loadTopPicNewsList];
             }
         }
     }
@@ -347,16 +409,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if ([dataSourceArray count] > self.scrollMenu.selectedIndex) {
         int count = (int)[[dataSourceArray objectAtIndex:self.scrollMenu.selectedIndex] count];
-        switch (count) {
-            case 1:
-            case 2:
-            case 3:
-                return 1;
-                break;
-            default:
-                return count - 2;
-                break;
-        }
+        return count;
     }else{
         return 0;
     }
@@ -377,30 +430,28 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-            NSMutableArray *arr=[NSMutableArray array];
-            NSMutableArray *strArr = [NSMutableArray array];
-            NSMutableArray *toppicnews = [toppicnewsArray objectAtIndex:self.scrollMenu.selectedIndex];
-            for (NewsTableViewCell *news in toppicnews) {
-                NSString *temptitle  = news.title;
-                NSString *temptitleimg  = news.newsimageurl;
-                [arr addObject:temptitleimg];
-                [strArr addObject:temptitle];
+            
+        }
+        if ([dataSourceArray count] > self.scrollMenu.selectedIndex) {
+            NSArray *array = [dataSourceArray objectAtIndex:self.scrollMenu.selectedIndex];
+            
+            if ([array count] > 0) {
+                UIView *obj =  [[dataSourceArray objectAtIndex:self.scrollMenu.selectedIndex] objectAtIndex:0];
+                if (obj != nil) {
+                    [cell.contentView addSubview:obj];
+                }
             }
-            BMAdScrollView *adView = [[BMAdScrollView alloc] initWithNameArr:arr  titleArr:strArr height:190.0f offsetY:0];
-            adView.vDelegate = self;
-            adView.pageCenter = CGPointMake([UIScreen mainScreen].bounds.size.width - 25, adView.frame.size.height-15);
-            adView.backgroundColor = [UIColor whiteColor];
-            [cell.contentView addSubview:adView];
         }
         return cell;
     }else{
+        
         static NSString *cellreuseIdentifier = @"NewsTableViewCell";
         NewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellreuseIdentifier];
         if (cell == nil) {
             cell = [[[NSBundle mainBundle] loadNibNamed:@"NewsTableViewCell" owner:self options:nil] lastObject];
         }
-        if ([[dataSourceArray objectAtIndex:self.scrollMenu.selectedIndex] count] > indexPath.row + 2) {
-            NSDictionary *info = [[dataSourceArray objectAtIndex:self.scrollMenu.selectedIndex] objectAtIndex:indexPath.row + 2];
+        if ([[dataSourceArray objectAtIndex:self.scrollMenu.selectedIndex] count] > indexPath.row) {
+            NSDictionary *info = [[dataSourceArray objectAtIndex:self.scrollMenu.selectedIndex] objectAtIndex:indexPath.row];
             //    NSString *newsid = [info objectForKey:@"id"];
             //    NSString *newsdate = [info objectForKey:@"newspath"];
             NSNumber *plnum = [info objectForKey:@"plnum"];
@@ -413,7 +464,6 @@
             cell.newsreplynum.text = [NSString stringWithFormat:@"%d",[plnum intValue]];
             [cell.newsimage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",API_HOST,titlepic]] placeholderImage:[UIImage imageNamed:@"defalut_pic"]];
         }
-        
         return cell;
     }
     
@@ -421,18 +471,22 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSDictionary *info = [[dataSourceArray objectAtIndex:self.scrollMenu.selectedIndex] objectAtIndex:indexPath.row + 2];
-    NSString *newsid = [info objectForKey:@"id"];
-    NSString *title = [info objectForKey:@"title"];
-    NSString *titlepic = [info objectForKey:@"titlepic"];
-    XHMenu *menu =  [self.menus objectAtIndex:self.scrollMenu.selectedIndex];
-    NewsDetailViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"NewsDetailViewController"];
-    vc.url = [NSString stringWithFormat:@"%@%@?dealType=%@&classid=%@&newid=%@",API_HOST,API_GET_NEWS_INFO,@"select",menu.menuid,newsid];
-    vc.title = self.detailTitle;
-    vc.newsid = newsid;
-    vc.shareText = title;
-    vc.shareImage = [NSString stringWithFormat:@"%@%@",API_HOST,titlepic];
-    [self.navigationController pushViewController:vc animated:YES];
+    if (indexPath.row != 0) {
+        NSDictionary *info = [[dataSourceArray objectAtIndex:self.scrollMenu.selectedIndex] objectAtIndex:indexPath.row];
+        NSString *newsid = [info objectForKey:@"id"];
+        NSString *title = [info objectForKey:@"title"];
+        NSString *titlepic = [info objectForKey:@"titlepic"];
+        XHMenu *menu =  [self.menus objectAtIndex:self.scrollMenu.selectedIndex];
+        NewsDetailViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"NewsDetailViewController"];
+        vc.url = [NSString stringWithFormat:@"%@%@?dealType=%@&classid=%@&newid=%@",API_HOST,API_GET_NEWS_INFO,@"select",menu.menuid,newsid];
+        vc.title = self.detailTitle;
+        vc.newsid = newsid;
+        vc.shareText = title;
+        vc.classid = menu.menuid;
+        vc.shareImage = [NSString stringWithFormat:@"%@%@",API_HOST,titlepic];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -448,15 +502,15 @@
 {
     NewsTableViewCell *cell = [[toppicnewsArray objectAtIndex:self.scrollMenu.selectedIndex] objectAtIndex:vid - 1];
     NSString *newsid = cell.newsid;
-    NSDictionary *info = [[dataSourceArray objectAtIndex:self.scrollMenu.selectedIndex] objectAtIndex:vid - 1];
-    NSString *title = [info objectForKey:@"title"];
-    NSString *titlepic = [info objectForKey:@"titlepic"];
+    NSString *title = cell.title;
+    NSString *titlepic = cell.titlepic;
     XHMenu *menu =  [self.menus objectAtIndex:self.scrollMenu.selectedIndex];
     NewsDetailViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"NewsDetailViewController"];
     vc.url = [NSString stringWithFormat:@"%@%@?dealType=%@&classid=%@&newid=%@",API_HOST,API_GET_NEWS_INFO,@"select",menu.menuid,newsid];
     vc.title = self.detailTitle;
     vc.newsid = newsid;
     vc.shareText = title;
+    vc.classid = menu.menuid;
     vc.shareImage = [NSString stringWithFormat:@"%@%@",API_HOST,titlepic];
     [self.navigationController pushViewController:vc animated:YES];
 }

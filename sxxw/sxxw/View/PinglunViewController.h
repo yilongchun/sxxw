@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UITextView *content;
 - (IBAction)save:(id)sender;
 @property (nonatomic, strong) NSString *newsid;
+@property (nonatomic, strong) NSString *classid;
 
 @end

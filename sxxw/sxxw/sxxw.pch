@@ -28,9 +28,9 @@
 #define API_GET_NEWS_INFO @"/cm/e/add/ecmsinfo_app.php"
 #define API_TO_LOGIN_URL @"/cm/e/member/doaction_app.php"
 #define API_TO_REGISTER_URL @"/cm/e/member/doaction_app.php"
-#define API_TO_OWNERNEWS_URL @"/e/DoInfo/ecms_app.php"
-#define API_TO_COMMENT_URL @"/e/pl/doaction_app.php"
-
+#define API_TO_OWNERNEWS_URL @"/cm/e/DoInfo/ecms_app.php"
+#define API_TO_COMMENT_URL @"/cm/e/pl/doaction_app.php"
+#define API_UPLOAD_IMAGE_URL @"/cm/e/uploadImg.php"
 
 
 

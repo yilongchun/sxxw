@@ -18,6 +18,7 @@
 
 @property(nonatomic, assign)id<QCheckBoxDelegate> delegate;
 @property(nonatomic, assign)BOOL checked;
+@property(nonatomic, strong) NSString *btnid;
 @property(nonatomic, retain)id userInfo;
 
 - (id)initWithDelegate:(id)delegate;

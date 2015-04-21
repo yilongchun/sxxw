@@ -58,6 +58,10 @@
     vc3.detailTitle = @"清洁能源论坛";
     
     UITabBarItem *item1 = [[UITabBarItem alloc] initWithTitle:@"中国三峡工程报" image:[UIImage imageNamed:@"01"] tag:1];
+    
+    
+    
+    
     UITabBarItem *item2 = [[UITabBarItem alloc] initWithTitle:@"中国三峡杂志" image:[UIImage imageNamed:@"02"] tag:2];
     UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"清洁能源论坛" image:[UIImage imageNamed:@"03"] tag:3];
     
@@ -70,6 +74,180 @@
 
     self.selectedIndex = 0;
 //    [[self tabBar] setSelectedImageTintColor:[UIColor colorWithRed:116/255.0 green:176/255.0 blue:64/255.0 alpha:1]];
+    
+    
+    UIView *view = [[UIView alloc] initWithFrame:self.view.frame];
+    view.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:view];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setValue:@"select" forKey:@"dealType"];
+    [parameters setValue:@"5" forKey:@"classid"];
+    NSString *str = [NSString stringWithFormat:@"%@%@",API_HOST,API_GET_NEWS_LIST];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
+    [manager GET:str parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self hideHud];
+//        NSLog(@"JSON: %@", operation.responseString);
+        NSString *result = [NSString stringWithFormat:@"%@",[operation responseString]];
+        NSError *error;
+        NSDictionary *info = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+        if (info == nil) {
+            NSLog(@"json parse failed \r\n");
+        }else{
+            NSString *titlepic = [info objectForKey:@"titlepic"];
+            UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-50)];
+            [imageview setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",API_HOST,titlepic]]];
+            imageview.userInteractionEnabled = YES;
+            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickImage:)];
+            [imageview addGestureRecognizer:tap];
+            [view addSubview:imageview];
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+            [button addTarget:self action:@selector(theButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+            [button setTitle:@"点击进入" forState:UIControlStateNormal];
+            [button.titleLabel setFont:[UIFont systemFontOfSize:15]];
+            [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+            button.frame = CGRectMake(0, imageview.frame.size.height, self.view.frame.size.width, 50.0);
+            [view addSubview:button];
+            
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"发生错误！%@",error);
+        [view removeFromSuperview];
+    }];
+}
+
+-(void)theButtonClick:(UIButton *)btn{
+    [btn.superview removeFromSuperview];
+}
+
+-(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
+    UIView *view = [[UIView alloc] initWithFrame:self.view.frame];
+    view.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:view];
+    
+    
+    if (item.tag == 1) {
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+        [parameters setValue:@"select" forKey:@"dealType"];
+        [parameters setValue:@"5" forKey:@"classid"];
+        NSString *str = [NSString stringWithFormat:@"%@%@",API_HOST,API_GET_NEWS_LIST];
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
+        [manager GET:str parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [self hideHud];
+//            NSLog(@"JSON: %@", operation.responseString);
+            NSString *result = [NSString stringWithFormat:@"%@",[operation responseString]];
+            NSError *error;
+            NSDictionary *info = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+            if (info == nil) {
+                NSLog(@"json parse failed \r\n");
+            }else{
+                NSString *titlepic = [info objectForKey:@"titlepic"];
+                UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-50)];
+                [imageview setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",API_HOST,titlepic]]];
+                imageview.userInteractionEnabled = YES;
+                UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickImage:)];
+                [imageview addGestureRecognizer:tap];
+                [view addSubview:imageview];
+                UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+                [button addTarget:self action:@selector(theButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+                [button setTitle:@"点击进入" forState:UIControlStateNormal];
+                [button.titleLabel setFont:[UIFont systemFontOfSize:15]];
+                [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+                button.frame = CGRectMake(0, imageview.frame.size.height, self.view.frame.size.width, 50.0);
+                [view addSubview:button];
+            }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"发生错误！%@",error);
+            [view removeFromSuperview];
+            [self showHint:@"连接失败"];
+        }];
+    }else if(item.tag == 2){
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+        [parameters setValue:@"select" forKey:@"dealType"];
+        [parameters setValue:@"6" forKey:@"classid"];
+        NSString *str = [NSString stringWithFormat:@"%@%@",API_HOST,API_GET_NEWS_LIST];
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
+        [manager GET:str parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [self hideHud];
+//            NSLog(@"JSON: %@", operation.responseString);
+            NSString *result = [NSString stringWithFormat:@"%@",[operation responseString]];
+            NSError *error;
+            NSDictionary *info = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+            if (info == nil) {
+                NSLog(@"json parse failed \r\n");
+            }else{
+                NSString *titlepic = [info objectForKey:@"titlepic"];
+                UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-50)];
+                [imageview setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",API_HOST,titlepic]]];
+                imageview.userInteractionEnabled = YES;
+                UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickImage:)];
+                [imageview addGestureRecognizer:tap];
+                [view addSubview:imageview];
+                UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+                [button addTarget:self action:@selector(theButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+                [button setTitle:@"点击进入" forState:UIControlStateNormal];
+                [button.titleLabel setFont:[UIFont systemFontOfSize:15]];
+                [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+                button.frame = CGRectMake(0, imageview.frame.size.height, self.view.frame.size.width, 50.0);
+                [view addSubview:button];
+            }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"发生错误！%@",error);
+            [view removeFromSuperview];
+            [self showHint:@"连接失败"];
+        }];
+    }else if(item.tag == 3){
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+        [parameters setValue:@"select" forKey:@"dealType"];
+        [parameters setValue:@"9" forKey:@"classid"];
+        NSString *str = [NSString stringWithFormat:@"%@%@",API_HOST,API_GET_NEWS_LIST];
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json", @"text/plain", @"text/html", nil];
+        [manager GET:str parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [self hideHud];
+//            NSLog(@"JSON: %@", operation.responseString);
+            NSString *result = [NSString stringWithFormat:@"%@",[operation responseString]];
+            NSError *error;
+            NSDictionary *info = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+            if (info == nil) {
+                NSLog(@"json parse failed \r\n");
+            }else{
+                NSString *titlepic = [info objectForKey:@"titlepic"];
+                UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-50)];
+                [imageview setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",API_HOST,titlepic]]];
+                imageview.userInteractionEnabled = YES;
+                UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickImage:)];
+                [imageview addGestureRecognizer:tap];
+                [view addSubview:imageview];
+                UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+                [button addTarget:self action:@selector(theButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+                [button setTitle:@"点击进入" forState:UIControlStateNormal];
+                [button.titleLabel setFont:[UIFont systemFontOfSize:15]];
+                [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+                button.frame = CGRectMake(0, imageview.frame.size.height, self.view.frame.size.width, 50.0);
+                [view addSubview:button];
+            }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"发生错误！%@",error);
+            [view removeFromSuperview];
+            [self showHint:@"连接失败"];
+        }];
+    }
+}
+
+-(void)clickImage:(UITapGestureRecognizer *)gesture{
+    [gesture.view.superview removeFromSuperview];
+//    NSLog(@"%@",gesture.view);
 }
 
 -(void)viewWillAppear:(BOOL)animated
