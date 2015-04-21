@@ -386,7 +386,7 @@
     NSString *guanjianzi = @"";
     NSString *jianjie = @"";
     NSString *zuozhe = self.tougaouser.text;
-    NSMutableString *ownernews = [NSMutableString string];
+    NSMutableString *ownernews = [NSMutableString stringWithString:self.content.text];
     if(fileNamesArray.count > 0){
         for(int i=0;i<fileNamesArray.count;i++){
             [ownernews appendFormat:@"</br></br><img src='http://www.weyida.cn/cm/e/uploadPic/%@' />", fileNamesArray[i]];
@@ -400,7 +400,7 @@
     [parameters setValue:@"MAddInfo" forKey:@"enews"];
     [parameters setValue:@"1418027821" forKey:@"filepass"];
     [parameters setValue:typeid forKey:@"classid"];
-    [parameters setValue:[NSString stringWithFormat:@"%@%@",temp,self.content.text] forKey:@"newstext"];
+    [parameters setValue:[NSString stringWithFormat:@"%@%@",temp,ownernews] forKey:@"newstext"];
     [parameters setValue:@"1" forKey:@"mid"];
     [parameters setValue:self.titleText.text forKey:@"title"];
     [parameters setValue:fbt forKey:@"ftitle"];
