@@ -347,7 +347,10 @@
     NSLog(@"save");
     [[IQKeyboardManager sharedManager] resignFirstResponder];
     
-    
+    if ([typeid isEqualToString:@""]) {
+        [self showHint:@"请选择栏目！"];
+        return;
+    }
     if ([self.titleText.text isEqualToString:@""]) {
         [self showHint:@"标题不能为空！"];
         return;
@@ -356,10 +359,7 @@
         [self showHint:@"稿件内容不能为空！"];
         return;
     }
-    if ([typeid isEqualToString:@""]) {
-        [self showHint:@"请选择栏目！"];
-        return;
-    }
+    
     
     
     [self showHudInView:self.view hint:@"正在上传，请稍后......"];
