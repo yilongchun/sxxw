@@ -124,6 +124,7 @@
     UIPageControl *pageControl;
     
     NSInteger tempIndex;
+    BOOL flag;
 }
 @end
 static  int pageNumber;//页码
@@ -157,6 +158,7 @@ static  int pageNumber;//页码
         
       //设置NSTimer
         _timer = [NSTimer scheduledTimerWithTimeInterval:INTERVALE target:self selector:@selector(runTimePage) userInfo:nil repeats:YES];
+        flag = YES;
         
     }
     return self;
@@ -320,9 +322,15 @@ static  int pageNumber;//页码
     page --;  // 默认从第二页开始
     tempIndex = page;
 }
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    flag = NO;
+}
+
 // scrollview 委托函数
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
+    flag = YES;
     CGFloat pagewidth = imageSV.frame.size.width;
     int currentPage = floor((imageSV.contentOffset.x - pagewidth/ ([imageNameArr count]+2)) / pagewidth) + 1;
     if (currentPage==0)
@@ -349,7 +357,9 @@ static  int pageNumber;//页码
 // 定时器 绑定的方法
 - (void)runTimePage
 {
-    [self turnPage];
+    if (flag) {
+        [self turnPage];
+    }
 }
 
 /*
