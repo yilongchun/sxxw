@@ -114,14 +114,8 @@
 -(void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    
-    
     self.myscrollview.contentOffset = self.scrollviewContentOffsetChange;
-    
-    
-    
     self.myscrollview.contentSize = CGSizeMake(self.view.frame.size.width,self.btn1.frame.origin.y + self.btn1.frame.size.height + 10);
-    NSLog(@"contentsize %f",self.btn1.frame.origin.y + self.btn1.frame.size.height + 10);
     if (chosenImages.count > 0) {
         CGFloat width = chosenImages.count * 90;
         if (chosenImages.count > 1) {
@@ -130,12 +124,6 @@
         [self.imagescrollview setContentSize:CGSizeMake(width, 90)];
         
     }
-    
-//    NSLog(@"viewDidLayoutSubviews %f",CGRectGetMinY(self.btn1.frame));
-//    NSLog(@"viewDidLayoutSubviews %f",self.btn1.frame.origin.y + self.btn1.frame.size.height);
-    
-    
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
