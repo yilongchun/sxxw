@@ -578,6 +578,7 @@
     }
     
     if (recognizer.state == UIGestureRecognizerStateChanged) {
+        
         CGFloat delta = 0;
         if (self.visible) {
             delta = self.originalPoint.x != 0 ? (point.x + self.originalPoint.x) / self.originalPoint.x : 0;
@@ -590,7 +591,7 @@
         
         CGFloat backgroundViewScale = 1.7f - (0.7f * delta);
         CGFloat menuViewScale = 1.5f - (0.5f * delta);
-
+        
         if (!self.bouncesHorizontally) {
             contentViewScale = MAX(contentViewScale, self.contentViewScaleValue);
             backgroundViewScale = MAX(backgroundViewScale, 1.0);
@@ -614,10 +615,10 @@
             }
         }
         
-       if (!self.bouncesHorizontally && self.visible) {
-           if (self.contentViewContainer.frame.origin.x > self.contentViewContainer.frame.size.width / 2.0)
-               point.x = MIN(0.0, point.x);
-           
+        if (!self.bouncesHorizontally && self.visible) {
+            if (self.contentViewContainer.frame.origin.x > self.contentViewContainer.frame.size.width / 2.0)
+                point.x = MIN(0.0, point.x);
+            
             if (self.contentViewContainer.frame.origin.x < -(self.contentViewContainer.frame.size.width / 2.0))
                 point.x = MAX(0.0, point.x);
         }
@@ -650,10 +651,19 @@
             self.contentViewContainer.transform = CGAffineTransformMakeScale(oppositeScale, oppositeScale);
             self.contentViewContainer.transform = CGAffineTransformTranslate(self.contentViewContainer.transform, point.x, 0);
         } else {
-            self.contentViewContainer.transform = CGAffineTransformMakeScale(contentViewScale, contentViewScale);
-            self.contentViewContainer.transform = CGAffineTransformTranslate(self.contentViewContainer.transform, point.x, 0);
+            if ((!self.leftMenuVisible && point.x > 0) || (self.leftMenuVisible && point.x < 0)) {
+                if (point.x > 0) {//向右
+                    if (point.x <= [UIScreen mainScreen].bounds.size.width / 2 + _contentViewInPortraitOffsetCenterX) {
+                        self.contentViewContainer.transform = CGAffineTransformMakeScale(contentViewScale, contentViewScale);
+                        self.contentViewContainer.transform = CGAffineTransformTranslate(self.contentViewContainer.transform, point.x, 0);
+                    }
+                }else{
+                    self.contentViewContainer.transform = CGAffineTransformMakeScale(contentViewScale, contentViewScale);
+                    self.contentViewContainer.transform = CGAffineTransformTranslate(self.contentViewContainer.transform, point.x, 0);
+                }
+                
+            }
         }
-        
         self.leftMenuViewController.view.hidden = self.contentViewContainer.frame.origin.x < 0;
         self.rightMenuViewController.view.hidden = self.contentViewContainer.frame.origin.x > 0;
         
@@ -670,6 +680,8 @@
         }
         
         [self statusBarNeedsAppearanceUpdate];
+        
+        
     }
     
    if (recognizer.state == UIGestureRecognizerStateEnded) {
