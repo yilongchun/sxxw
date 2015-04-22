@@ -33,6 +33,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
@@ -113,29 +114,43 @@
 -(void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
+    
+    
     self.myscrollview.contentOffset = self.scrollviewContentOffsetChange;
-    self.myscrollview.contentSize = CGSizeMake(self.view.frame.size.width,CGRectGetMaxY(self.btn1.frame) + 10);
+    
+    
+    
+    self.myscrollview.contentSize = CGSizeMake(self.view.frame.size.width,self.btn1.frame.origin.y + self.btn1.frame.size.height + 10);
+    NSLog(@"contentsize %f",self.btn1.frame.origin.y + self.btn1.frame.size.height + 10);
     if (chosenImages.count > 0) {
         CGFloat width = chosenImages.count * 90;
         if (chosenImages.count > 1) {
             width = width + (chosenImages.count - 1) * 5;
         }
         [self.imagescrollview setContentSize:CGSizeMake(width, 90)];
-        if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
-            self.myscrollview.contentSize = CGSizeMake(self.view.frame.size.width,CGRectGetMaxY(self.btn1.frame) + 100);
-        }
+        
     }
+    
+//    NSLog(@"viewDidLayoutSubviews %f",CGRectGetMinY(self.btn1.frame));
+//    NSLog(@"viewDidLayoutSubviews %f",self.btn1.frame.origin.y + self.btn1.frame.size.height);
+    
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
-    self.myscrollview.contentOffset = CGPointZero;
+  
+        self.myscrollview.contentOffset = CGPointZero;
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    self.scrollviewContentOffsetChange = self.myscrollview.contentOffset;
+    
+        self.scrollviewContentOffsetChange = self.myscrollview.contentOffset;
+    
 }
 
 -(void)initBtn{
@@ -334,6 +349,7 @@
         self.imagescrollviewLayoutConstraint.constant = 90;
     }else{
         self.imagescrollviewLayoutConstraint.constant = 0;
+        self.myscrollview.contentSize = CGSizeMake(self.view.frame.size.width,self.btn1.frame.origin.y + self.btn1.frame.size.height + 10);
     }
     
     NSLog(@"%@",chosenImages);
