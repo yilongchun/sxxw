@@ -121,6 +121,9 @@
             width = width + (chosenImages.count - 1) * 5;
         }
         [self.imagescrollview setContentSize:CGSizeMake(width, 90)];
+        if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
+            self.myscrollview.contentSize = CGSizeMake(self.view.frame.size.width,CGRectGetMaxY(self.btn1.frame) + 100);
+        }
     }
 }
 
@@ -274,12 +277,14 @@
 }
 
 -(void)tapImage:(UITapGestureRecognizer *)gesture{
+    [self becomeFirstResponder];
     UIMenuController *popMenu = [UIMenuController sharedMenuController];
     UIMenuItem *item1 = [[UIMenuItem alloc] initWithTitle:@"删除" action:@selector(menuItem1Pressed:)];
     NSArray *menuItems = [NSArray arrayWithObjects:item1,nil];
     [popMenu setMenuItems:menuItems];
     [popMenu setArrowDirection:UIMenuControllerArrowDown];
     [popMenu setTargetRect:CGRectMake(45,0,0,0) inView:gesture.view];
+//    [popMenu setMenuVisible:NO];
     [popMenu setMenuVisible:YES animated:YES];
     tempTag = (int)gesture.view.tag;
     tempImage = gesture.view;
