@@ -82,6 +82,7 @@
     _scrollView.delegate = self;
     _scrollView.pagingEnabled = YES;
     _scrollView.bounces = NO;
+    _scrollView.backgroundColor = [UIColor whiteColor];
     
     [self.view addSubview:self.scrollView];
     
@@ -128,22 +129,9 @@
                 menu.titleFont = [UIFont boldSystemFontOfSize:16];
                 [self.menus addObject:menu];
                 
-                UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(i * CGRectGetWidth(_scrollView.bounds), 0, CGRectGetWidth(_scrollView.bounds), CGRectGetHeight(_scrollView.bounds)-49) style:UITableViewStylePlain];
-                table.dataSource = self;
-                table.delegate = self;
-                table.pullDelegate = self;
-                table.canPullDown = YES;
-                table.canPullUp = NO;
-                if ([table respondsToSelector:@selector(setSeparatorInset:)]) {
-                    [table setSeparatorInset:UIEdgeInsetsZero];
-                }
-                if ([table respondsToSelector:@selector(setLayoutMargins:)]) {
-                    [table setLayoutMargins:UIEdgeInsetsZero];
-                }
-                UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
-                [table setTableFooterView:v];
-                [_scrollView addSubview:table];
-                [tableArray addObject:table];
+                
+                NSObject *obj = [[NSObject alloc]init];
+                [tableArray addObject:obj];
                 NSMutableArray *dataSource = [NSMutableArray array];
                 [dataSourceArray addObject:dataSource];
                 NSMutableArray *dataSource2 = [NSMutableArray array];
@@ -168,8 +156,30 @@
 }
 
 -(void)loadTopPicNewsList{
+    [self showHudInView:self.view hint:@"加载中"];
+    NSObject *obj = [tableArray objectAtIndex:self.scrollMenu.selectedIndex];
+    if (![obj isKindOfClass:[UITableView class]]) {
+        UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(self.scrollMenu.selectedIndex * CGRectGetWidth(_scrollView.bounds), 0, CGRectGetWidth(_scrollView.bounds), CGRectGetHeight(_scrollView.bounds)-49) style:UITableViewStylePlain];
+        table.dataSource = self;
+        table.delegate = self;
+        table.pullDelegate = self;
+        table.canPullDown = YES;
+        table.canPullUp = NO;
+        if ([table respondsToSelector:@selector(setSeparatorInset:)]) {
+            [table setSeparatorInset:UIEdgeInsetsZero];
+        }
+        if ([table respondsToSelector:@selector(setLayoutMargins:)]) {
+            [table setLayoutMargins:UIEdgeInsetsZero];
+        }
+        UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
+        [table setTableFooterView:v];
+        [_scrollView addSubview:table];
+        [tableArray replaceObjectAtIndex:self.scrollMenu.selectedIndex withObject:table];
+    }
     
-        [self showHudInView:self.view hint:@"加载中"];
+    
+    
+    
         NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
         [parameters setValue:@"select" forKey:@"dealType"];
         [parameters setValue:@"7" forKey:@"classid"];
@@ -470,6 +480,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row != 0) {
         NSDictionary *info = [[dataSourceArray objectAtIndex:self.scrollMenu.selectedIndex] objectAtIndex:indexPath.row];
