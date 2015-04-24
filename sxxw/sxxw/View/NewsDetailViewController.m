@@ -112,7 +112,12 @@
     NSString *textToShare = self.shareText;
     UIImage *imageToShare = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.shareImage]]];
     NSURL *urlToShare = [NSURL URLWithString:self.url];
-    NSArray *activityItems = @[textToShare, imageToShare, urlToShare];
+    NSMutableArray *activityItems =[NSMutableArray array];
+    [activityItems addObject:textToShare];
+    if (imageToShare != nil) {
+        [activityItems addObject:imageToShare];
+    }
+    [activityItems addObject:urlToShare];
     UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems  applicationActivities:nil];
     [self presentViewController:activityController  animated:YES completion:nil];
 }

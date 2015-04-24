@@ -180,9 +180,9 @@
         }
         [self hideHud];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"发生错误！%@",error);
+        NSLog(@"发生错误！%@",[error localizedDescription]);
         [self hideHud];
-        [self showHint:@"连接失败"];
+        [self showHint:@"获取栏目信息失败"];
     }];
 }
 
@@ -380,7 +380,7 @@
                 [self saveData:fileNamesArray];
             }
         }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"发生错误！%@",error);
+            NSLog(@"发生错误！%@",[error localizedDescription]);
             [self hideHud];
             [self showHint:@"上传失败"];
         }];
