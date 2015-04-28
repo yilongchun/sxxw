@@ -22,19 +22,37 @@
 
 #define CURRENT_VERSION [[[UIDevice currentDevice]systemVersion] floatValue]
 
-#define API_HOST @"http://www.weyida.cn"
-#define API_GET_CLASS_LIST @"/cm/e/add/ecmsclass_app.php"
-#define API_GET_NEWS_LIST @"/cm/e/add/ecmsinfo_app.php"
-#define API_GET_NEWS_INFO @"/cm/e/add/ecmsinfo_app.php"
-#define API_TO_LOGIN_URL @"/cm/e/member/doaction_app.php"
-#define API_TO_REGISTER_URL @"/cm/e/member/doaction_app.php"
+#define API_HOST             @"http://www.weyida.cn"
+#define API_GET_CLASS_LIST   @"/cm/e/add/ecmsclass_app.php"
+#define API_GET_NEWS_LIST    @"/cm/e/add/ecmsinfo_app.php"
+#define API_GET_NEWS_INFO    @"/cm/e/add/ecmsinfo_app.php"
+#define API_TO_LOGIN_URL     @"/cm/e/member/doaction_app.php"
+#define API_TO_REGISTER_URL  @"/cm/e/member/doaction_app.php"
 #define API_TO_OWNERNEWS_URL @"/cm/e/DoInfo/ecms_app.php"
-#define API_TO_COMMENT_URL @"/cm/e/pl/doaction_app.php"
+#define API_TO_COMMENT_URL   @"/cm/e/pl/doaction_app.php"
 #define API_UPLOAD_IMAGE_URL @"/cm/e/uploadImg.php"
 
-
-
-
+//内存管理的安全释放对象
+#define SAFE_RELEASE(x) [x release];x=nil
+//当前系统版本号
+#define kCurrentSystemVersion [[[UIDevice currentDevice] systemVersion] floatValue]
+//判断是否是iOS7或更高的系统版本
+#define IOS_VERSION_7_OR_LATER (([[[UIDevice currentDevice] systemVersion] floatValue] >=7.0)? (YES):(NO))
+//当前的系统语言
+#define kCurrentLanguage [[NSLocale preferredLanguages] objectAtIndex:0]
+//定义常用的颜色
+#define kDarkGrayColor [UIColor colorWithRed:100.0/255 green:100.0/255 blue:100.0/255alpha:1.0]
+//定义调试语句
+#define DEBUG_MODE 1
+#if DEBUG_MODE
+#define DLog( s, ... ) NSLog( @"<%p %@:(%d)> %@", self, [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
+#else
+#define DLog( s, ... )
+#endif
+//后台运行
+#define BACK_GCD(block) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block)
+//主线程运行
+#define MAIN_GCD(block) dispatch_async(dispatch_get_main_queue(),block)
 
 
 
