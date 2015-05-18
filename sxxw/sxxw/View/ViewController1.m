@@ -465,7 +465,7 @@
             //    NSString *newsid = [info objectForKey:@"id"];
             //    NSString *newsdate = [info objectForKey:@"newspath"];
             NSNumber *plnum = [info objectForKey:@"plnum"];
-            NSString *smalltext = [info objectForKey:@"smalltext"];
+            NSString *smalltext = [info objectForKey:@"ftitle"];
             NSString *title = [info objectForKey:@"title"];
             NSString *titlepic = [info objectForKey:@"titlepic"];
             //        cell.newsimageurl = [NSString stringWithFormat:@"%@%@",API_HOST,titlepic];
